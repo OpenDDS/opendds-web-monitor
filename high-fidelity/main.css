@@ -3,6 +3,7 @@
     bottom: 0;
     left: 0;
     top: 56px;
+    overflow-y: scroll;
 }
 main{
     /* left: 25%; */
