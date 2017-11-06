@@ -9,9 +9,11 @@ main{
 }
 table, td {
     border: 1px solid black;
+    text-align: center;
 }
- td {
-    width: 33%;
-    height: 33%;
-    padding-left: 40000px;
- }
+tr {
+    height: 250px;
+    }
+p {
+    font-size: 24pt;
+}
