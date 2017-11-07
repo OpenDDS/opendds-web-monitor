@@ -2,10 +2,8 @@ var sidebar = document.getElementById("sidebar")
 var main = document.getElementById("main")
 
 var items = [
-    { link: "http://google.com", text: "Google", icon: "fa fa-th-list" },
-    { link: "http://google.com", text: "Google", icon: "fa fa-table" },
-    { link: "http://google.com", text: "Google", icon: "fa fa-th-large" },
-    { link: "http://google.com", text: "Google", icon: "fa fa-th" }   
+    { link: "index.html", text: "Dashboard", icon: "fa fa-th-large" },
+    { link: "data.html", text: "Process List", icon: "fa fa-th-list" },
 ]
 
 console.log(sidebar)
