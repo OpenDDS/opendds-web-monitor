@@ -17,7 +17,7 @@ var displayOpened = () => {
         li.className = "nav-item"
     
         var a = document.createElement('a')
-        a.className = "nav-link"
+        a.className = "nav-link text-info"
         a.href = item.link
     
         var span = document.createElement('span')
@@ -34,7 +34,7 @@ var displayOpened = () => {
     var closeIcon = document.createElement('span')
     closeIcon.className = "fa fa-chevron-left"
     closeButton.appendChild(closeIcon)
-    closeButton.className = "btn btn-primary"
+    closeButton.className = "btn btn-info"
     closeButton.id = "collapseButton"
     closeButton.onclick = () => {
         close()
@@ -51,7 +51,7 @@ var displayClosed = () => {
         li.className = "nav-item"
     
         var a = document.createElement('a')
-        a.className = "nav-link"
+        a.className = "nav-link text-info"
         a.href = item.link
     
         var span = document.createElement('span')
@@ -66,7 +66,7 @@ var displayClosed = () => {
     var openIcon = document.createElement('span')
     openIcon.className = "fa fa-chevron-right"
     openButton.appendChild(openIcon)
-    openButton.className = "btn btn-primary"
+    openButton.className = "btn btn-info"
     openButton.id = "collapseButton"
     openButton.onclick = () => {
         open()
