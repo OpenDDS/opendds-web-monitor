@@ -54,7 +54,7 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+            <nav id="sidebar">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">Home</a>
@@ -67,35 +67,34 @@
                     </li>
                 </ul>
             </nav>
-            <main class="col-9 offset-sm-3 offset-md-2">
+            <main id="main">
                 <h1>Welcome to the OpenDDS Monitor</h1>
+                <div class="row">
+                    <div class="tabledata col-sm-12">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Number of Consumers<p>123</p></td>
+                                    <td>Number of Producers<p>123</p></td>
+                                    <td>Number of Data Writers<p>123</p></td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Topics<p>123</p></td>
+                                    <td>Number of Samples<p>123</p></td>
+                                    <td>Number of Data Readers<p>123</p></td>
+                                </tr>
+                                <tr>
+                                    <td>Largest Topics<p>Google</p></td>
+                                    <td>Most Updated Topics<p>Google</p></td>
+                                    <td>Total Writes by Data Writers<p>123</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>
             </main>
         </div>
     </div>
-    <div class="row">
-        <div class="tabledata col-sm-9 offset-md-2">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>Number of Consumers<p>123</p></td>
-                        <td>Number of Producers<p>123</p></td>
-                        <td>Number of Data Writers<p>123</p></td>
-                    </tr>
-                    <tr>
-                        <td>Number of Topics<p>123</p></td>
-                        <td>Number of Samples<p>123</p></td>
-                        <td>Number of Data Readers<p>123</p></td>
-                    </tr>
-                    <tr>
-                        <td>Largest Topics<p>Google</p></td>
-                        <td>Most Updated Topics<p>Google</p></td>
-                        <td>Total Writes by Data Writers<p>123</p></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>  
-    </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
