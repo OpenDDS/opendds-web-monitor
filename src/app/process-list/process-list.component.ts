@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./process-list.component.css']
 })
 export class ProcessListComponent implements OnInit {
-  title2 = ["d", "d"];
+
   constructor() { }
 
   ngOnInit() {
