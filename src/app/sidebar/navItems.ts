@@ -5,13 +5,8 @@ export default [
         icon: 'dashboard'
     },
     {
-        title: 'Dashboard',
-        link: '/',
-        icon: 'dashboard'
-    },
-    {
-        title: 'Dashboard',
-        link: '/',
-        icon: 'dashboard'
-    },
+        title: 'Process List',
+        link: '/process-list',
+        icon: 'bars'
+    }
 ]

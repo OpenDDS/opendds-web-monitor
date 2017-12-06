@@ -10,7 +10,7 @@
     </button>
   </ng-sidebar>
   <div id="mainContent" ng-sidebar-content>
-    <nav class="nav nav-pills flex-column nav-justified bg-light">
+    <nav id="collapsedNav" class="nav nav-pills flex-column nav-justified bg-light">
       <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" [href]="navItem.link">
         <fa [name]="navItem.icon"></fa>
       </a>

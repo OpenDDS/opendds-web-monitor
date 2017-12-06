@@ -4,6 +4,7 @@
 
 ng-sidebar-container {
     height: 100vh !important;
+    position: fixed;
 }
 
 ng-sidebar aside{
@@ -18,22 +19,32 @@ ng-sidebar aside{
     position: absolute;
     bottom: 10px;
     left: calc(50% - 20px);
+    cursor: pointer;
 }
 
 $collapsedNavbarWidth: 60px;
 
 #mainContent{
     width: 100%;
-    nav {
+    #collapsedNav {
         position: relative;
         width: $collapsedNavbarWidth;
         height: 100vh;
         text-align: center;
         margin: 0;
         float: left;
+        position: fixed;
     }
     div {
         width: calc(100% - #{$collapsedNavbarWidth});
         float: right;
+        div {
+            width: 100%;
+            padding: 15px
+        }
     }
+}
+
+a:focus, button:focus{
+    outline: none;
 }

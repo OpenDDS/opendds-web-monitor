@@ -7,7 +7,7 @@ import navItems from './navItems'
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  opened: boolean = true
+  opened: boolean = false
   test: string = 'testing...'
   navItems: Array<object> = navItems
   innerHtml: string = ''
