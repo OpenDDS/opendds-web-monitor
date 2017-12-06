@@ -1,18 +1,17 @@
 export default [
     {
-        title: 'Here',
-        link: 'http://google.com'
+        title: 'Dashboard',
+        link: '/',
+        icon: 'dashboard'
     },
     {
-        title: 'Here',
-        link: 'http://google.com'
+        title: 'Dashboard',
+        link: '/',
+        icon: 'dashboard'
     },
     {
-        title: 'Here',
-        link: 'http://google.com'
+        title: 'Dashboard',
+        link: '/',
+        icon: 'dashboard'
     },
-    {
-        title: 'Here',
-        link: 'http://google.com'
-    }
 ]

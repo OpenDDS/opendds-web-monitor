@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ElementRef } from '@angular/core'
 import navItems from './navItems'
 
 @Component({
@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
   opened: boolean = true
   test: string = 'testing...'
   navItems: Array<object> = navItems
+  innerHtml: string = ''
 
 
   toggleSidebar() {
@@ -17,10 +18,10 @@ export class SidebarComponent implements OnInit {
   }
 
   constructor() { 
+    
   }
 
   ngOnInit() {
     
   }
-
 }
