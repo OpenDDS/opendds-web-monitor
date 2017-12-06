@@ -1,3 +1,13 @@
 // version 4
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+ng-sidebar-container {
+    height: 100vh !important;
+}
+
+ng-sidebar aside{
+    background-color: $light;
+    color:  #fff;
+    padding: 15px;
+}

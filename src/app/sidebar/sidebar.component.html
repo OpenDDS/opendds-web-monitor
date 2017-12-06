@@ -1,0 +1,11 @@
+<ng-sidebar-container>
+  <ng-sidebar [(opened)]="opened">
+    <nav class="nav nav-pills flex-column nav-justified">
+      <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" href="{{navItem.link}}">{{navItem.title}}</a>
+    </nav>
+    <button><span class="glyphicon"></span></button>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <button (click)="toggleSidebar()" class="btn btn-default">Click</button>
+  </div>
+</ng-sidebar-container>
