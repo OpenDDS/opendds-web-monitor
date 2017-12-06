@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProcessListComponent } from './process-list/process-list.component';
 import { ProcessListModule } from './process-list/process-list.module';
 import { RouterModule } from '@angular/router';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
