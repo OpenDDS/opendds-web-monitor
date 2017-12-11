@@ -8,5 +8,10 @@ export default [
         title: 'Process List',
         link: '/process-list',
         icon: 'bars'
+    },
+    {
+        title: 'Graph',
+        link: '/graph-view',
+        icon: 'bars'
     }
 ]
