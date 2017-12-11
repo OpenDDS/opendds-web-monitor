@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-graph-view',
@@ -114,8 +115,8 @@ var reader = new Reader('R', 50, 50);
 var writer = new Writer('W', 400, 500);
 
 $(document).ready(function() {  
-  var canvas = $('canvas');
-  var context = canvas[0].getContext('2d');
+  var canvas = <HTMLCanvasElement> $('canvas').get(0);;
+  var context = <CanvasRenderingContext2D> canvas.getContext('2d');
   
   topic.connections.push(reader);
   topic.connections.push(writer);
@@ -128,8 +129,8 @@ $(document).ready(function() {
 
 $("canvas").click(function(event) {
 
-  var canvas = $('canvas');
-  var context = canvas[0].getContext('2d');
+  var canvas = <HTMLCanvasElement> $('canvas').get(0);;
+  var context = <CanvasRenderingContext2D> canvas.getContext('2d');
             
   var newNode = new Reader('R', event.pageX, event.pageY);
   topic.connections.push(newNode);
