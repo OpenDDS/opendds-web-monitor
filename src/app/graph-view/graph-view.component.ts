@@ -110,27 +110,31 @@ class Domain {
   
 }
 
+var canvas;// = <HTMLCanvasElement> $('canvas').get(0);;
+var context;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
+
 var topic = new Topic('T', 300, 300);
 var reader = new Reader('R', 50, 50);
 var writer = new Writer('W', 400, 500);
 
+
 $(document).ready(function() {  
-  var canvas = <HTMLCanvasElement> $('canvas').get(0);;
-  var context = <CanvasRenderingContext2D> canvas.getContext('2d');
-  
+  canvas = <HTMLCanvasElement> $('canvas')[0];
+  context = <CanvasRenderingContext2D> canvas.getContext("2d");
+
   topic.connections.push(reader);
   topic.connections.push(writer);
-  
+    
   topic.draw(context);
   reader.draw(context);
   writer.draw(context);
-  
 });
+
 
 $("canvas").click(function(event) {
 
-  var canvas = <HTMLCanvasElement> $('canvas').get(0);;
-  var context = <CanvasRenderingContext2D> canvas.getContext('2d');
+  //canvas = <HTMLCanvasElement> $('canvas').get(0);
+  //context = <CanvasRenderingContext2D> canvas.getContext('2d');
             
   var newNode = new Reader('R', event.pageX, event.pageY);
   topic.connections.push(newNode);

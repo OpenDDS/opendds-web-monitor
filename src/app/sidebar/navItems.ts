@@ -12,6 +12,6 @@ export default [
     {
         title: 'Graph',
         link: '/graph-view',
-        icon: 'bars'
+        icon: 'share-alt'
     }
 ]
