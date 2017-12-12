@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
+//import './graph-view.js';
+
+//declare function init();
 
 @Component({
   selector: 'app-graph-view',
@@ -11,8 +14,8 @@ export class GraphViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    init();
   }
-
 }
 
 class Node {
@@ -117,10 +120,11 @@ var topic = new Topic('T', 300, 300);
 var reader = new Reader('R', 50, 50);
 var writer = new Writer('W', 400, 500);
 
-
-$(document).ready(function() {  
+function init() {
   canvas = <HTMLCanvasElement> $('canvas')[0];
   context = <CanvasRenderingContext2D> canvas.getContext("2d");
+  context.canvas.width  = window.innerWidth;
+  context.canvas.height = window.innerHeight;
 
   topic.connections.push(reader);
   topic.connections.push(writer);
@@ -128,19 +132,35 @@ $(document).ready(function() {
   topic.draw(context);
   reader.draw(context);
   writer.draw(context);
+  console.log("canavas drawn!");
+}
+
+/*
+$(document).ready(function() {  
+  canvas = $('canvas')[0];
+  context = canvas.getContext("2d");
+  context.canvas.width  = window.innerWidth;
+  context.canvas.height = window.innerHeight;
+
+  topic.connections.push(reader);
+  topic.connections.push(writer);
+    
+  topic.draw(context);
+  reader.draw(context);
+  writer.draw(context);
+  console.log("canavas drawn!");
 });
+*/
 
+$(canvas).click(function(event) {
 
-$("canvas").click(function(event) {
-
-  //canvas = <HTMLCanvasElement> $('canvas').get(0);
-  //context = <CanvasRenderingContext2D> canvas.getContext('2d');
+  console.log("clicked canvas!");
+  //canvas = $('canvas').get(0);
+  //context = canvas.getContext('2d');
             
   var newNode = new Reader('R', event.pageX, event.pageY);
   topic.connections.push(newNode);
   newNode.draw(context);
   topic.draw(context);
             
-});
-
-
+});  
