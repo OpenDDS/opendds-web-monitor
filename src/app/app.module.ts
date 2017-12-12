@@ -9,15 +9,14 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProcessListComponent } from './process-list/process-list.component';
-import { ProcessListModule } from './process-list/process-list.module';
-import { RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    HomepageComponent
+    HomepageComponent,
+    ProcessListComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,8 +24,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     SidebarModule,
     Angular2FontawesomeModule,
     AppRoutingModule,
-    ProcessListModule,
-    // RouterModule.forRoot([{ path: "", component: AppComponent }])
   ],
   providers: [],
   bootstrap: [AppComponent]
