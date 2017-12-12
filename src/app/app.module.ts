@@ -10,8 +10,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProcessListComponent } from './process-list/process-list.component';
-import { ProcessListModule } from './process-list/process-list.module';
-import { RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { GraphViewComponent } from './graph-view/graph-view.component';
 
@@ -21,7 +19,8 @@ import { GraphViewComponent } from './graph-view/graph-view.component';
     AppComponent,
     SidebarComponent,
     HomepageComponent,
-    GraphViewComponent
+    GraphViewComponent,
+    ProcessListComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,8 +28,6 @@ import { GraphViewComponent } from './graph-view/graph-view.component';
     SidebarModule,
     Angular2FontawesomeModule,
     AppRoutingModule,
-    ProcessListModule,
-    // RouterModule.forRoot([{ path: "", component: AppComponent }])
   ],
   providers: [],
   bootstrap: [AppComponent]
