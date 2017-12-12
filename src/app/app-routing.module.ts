@@ -9,7 +9,7 @@ import { GraphViewComponent } from './graph-view/graph-view.component'
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'process-list', component: ProcessListComponent, pathMatch: "full" }, 
-  { path: 'grap-hview', component: GraphViewComponent, pathMatch: "full" }
+  { path: 'graph-view', component: GraphViewComponent, pathMatch: "full" }
 ];
 
 @NgModule({
