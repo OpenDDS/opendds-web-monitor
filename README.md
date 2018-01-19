@@ -2,10 +2,11 @@
 
 Installation:
 Pre-requirements:
-Node.JS (https://nodejs.org/en/), Angular CLI (https://github.com/angular/angular-cli)
-npm should be included in Node.JS install.
+1) Node.JS (https://nodejs.org/en/), Angular CLI (https://github.com/angular/angular-cli)
+2) npm should be included in Node.JS install.
+3) Must have OpenDDS install and compiled (set environment varibles before next step)
 
-type 'npm install' into command line, then 'ng serve'
+4) type 'npm install' into command line, then 'ng serve'
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
