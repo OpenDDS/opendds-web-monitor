@@ -7,15 +7,13 @@ function DataReader() {
 }
 
 DataReader.prototype.initializeDds = function() {
-  var DOMAIN_ID = 23;
-  this.factory = opendds.initialize();
-  this.library = opendds.load("./monitor.idl");
+  this.factory 
+  = opendds.initialize("-DCPSConfigFile ./rtps_disc.ini");
+  this.library = opendds.load("./idl/libOpenDDS_monitor");
   if (!this.library) {
     throw new Error("Could not open type support library");
   }
-  this.participant = this.factory.create_participant(DOMAIN_ID);
-  // Handle exit gracefully
+  participant = this.factory.create_participant(23);
 };
-
 
 module.exports = DataReader;
