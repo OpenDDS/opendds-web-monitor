@@ -1,8 +1,9 @@
 var ddsReader = require('./ddsHelper')
 const port = 3333;
 var io = require('socket.io').listen(port);
+var events = require('../eventConfig');
 
-io.on('connection', function(socket) {
+io.on(events.connection, function(socket) {
   var address = socket.handshake.address;
   console.log('New connection from ' + address.address + ':' + address.port);
 });
