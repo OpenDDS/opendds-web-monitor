@@ -1,4 +1,4 @@
-var ddsReader = require('./ddsHelper')
+var DataReader = require('./ddsHelper')
 const port = 3333;
 var io = require('socket.io').listen(port);
 var events = require('../eventConfig');
@@ -8,12 +8,9 @@ io.on(events.connection, function(socket) {
   console.log('New connection from ' + address.address + ':' + address.port);
 });
 
-var dataReader = new ddsReader();
+var DataReader = new DataReader();
 // Split out DDS args
-// var ddsArgs = process.argv.slice(process.argv.indexOf(__filename) + 1);
-dataReader.initializeDds();
 
-// dataReader.subscribe(function (sample) {
-//   console.log("sample received");
-//   io.emit('valve', sample);
-// });
+DataReader.initializeDR();
+
+DataReader.subscribe();
