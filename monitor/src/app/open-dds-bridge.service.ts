@@ -26,7 +26,7 @@ export class OpenDdsBridgeService {
     })
   }
 
-  private getSocket (keyword) {
+  getSocket (keyword) {
     return new Observable(observer => {
       this.socket = io(URL)
       this.socket.on(keyword, (data) => observer.next(data.data))
@@ -34,7 +34,7 @@ export class OpenDdsBridgeService {
     })
   }
 
-  private getConnection (socket) {
+  getConnection (socket) {
     return {
       socket,
       connection: socket.subscribe(topic => {
