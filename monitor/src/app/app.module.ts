@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProcessListComponent } from './process-list/process-list.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { GraphViewComponent } from './graph-view/graph-view.component';
+import { OpenDdsBridgeService } from './opendds-bridge.service';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { GraphViewComponent } from './graph-view/graph-view.component';
     Angular2FontawesomeModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    OpenDdsBridgeService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

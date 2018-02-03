@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import processes from './processes'
 
 @Component({
@@ -8,11 +8,10 @@ import processes from './processes'
 })
 
 export class ProcessListComponent implements OnInit {
-  processes: Array<object> = processes;
+  processes: Array<object> = processes
 
   constructor() { }
 
   ngOnInit() {
   }
-  
 }

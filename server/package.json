@@ -8,6 +8,7 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
+    "opendds": "0.0.6",
     "socket.io": "^2.0.4"
   }
 }
