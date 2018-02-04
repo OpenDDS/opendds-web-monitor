@@ -1,16 +1,45 @@
 import { Injectable } from '@angular/core'
-// import * as opendds from 'opendds'
+import { Observable } from 'rxjs/Observable'
+import { map, catchError } from 'rxjs/operators'
+import * as io from 'socket.io-client'
+import {Socket} from './interfaces'
+
+const URL = 'http://localhost:8080'
+
+const connectionsToCreate = [
+  'topics'
+]
 
 @Injectable()
 export class OpenDdsBridgeService {
-  factory: any
-  library: any
-  participant: any
-  constructor() { }
+  private socket
+  private connections
 
-  // public initDDS(argsArray: any): void {
-  //   this.factory = opendds.initialize()
-  //   this.library = opendds.load()
-  //   this.participant = this.factory.create_participant(23)
-  // }
+  data
+
+  constructor() {
+    this.data = {}
+    this.connections = {}
+    connectionsToCreate.forEach((item) => {
+      this.data[item] = []
+      this.connections[item] = this.getConnection(this.getSocket(item))
+    })
+  }
+
+  getSocket (keyword) {
+    return new Observable(observer => {
+      this.socket = io(URL)
+      this.socket.on(keyword, (data) => observer.next(data.data))
+      return () => this.socket.disconnect()
+    })
+  }
+
+  getConnection (socket) {
+    return {
+      socket,
+      connection: socket.subscribe(topic => {
+        this.data.topics.push(topic)
+      })
+    }
+  }
 }
