@@ -37,8 +37,12 @@
         </form>
     </div>
 </nav>
-<div>
-    <gridster [options]="options">
+
+    <!--<gridster [options]="options">-->
+    <gridster>
+        <gridster-item *ngFor="let item of dashboard">
+            {{title2[0] + " " + value2[0]}}
+        </gridster-item><!--
         <gridster-item [item]="item" *ngFor="let item of dashboard">
             {{title2[0] + " " + value2[0]}}
         </gridster-item>
@@ -53,12 +57,10 @@
         </gridster-item>
         <gridster-item [item]="item" *ngFor="let item of dashboard">
             {{title2[0] + " " + value2[0]}}
-        </gridster-item>
-        <gridster-item [item]="item" *ngFor="let item of dashboard">
-            {{title2[0] + " " + value2[0]}}
-        </gridster-item>
+        </gridster-item>-->
     </gridster>
-</div>
+
+<!--
 <div class="row">
     <div class="tabledata col-sm-12">
         <table class="table table-striped">
@@ -82,3 +84,4 @@
         </table>
     </div>
 </div>
+-->
