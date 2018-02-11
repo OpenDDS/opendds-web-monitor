@@ -13,7 +13,7 @@ import { ProcessListComponent } from './process-list/process-list.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { GraphViewComponent } from './graph-view/graph-view.component';
 import { OpenDdsBridgeService } from './opendds-bridge.service';
-
+import { GridsterModule } from 'angular-gridster2';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { OpenDdsBridgeService } from './opendds-bridge.service';
     SidebarModule,
     Angular2FontawesomeModule,
     AppRoutingModule,
+    GridsterModule
   ],
   providers: [
     OpenDdsBridgeService,

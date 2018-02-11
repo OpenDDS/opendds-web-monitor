@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
+
 export class HomepageComponent implements OnInit {
   title2 = [ "Number of Consumers", "Number of Producers","Number of Data Readers", "Number of Data Writers", "Number of Samples" ,
   "Number of Topics", "Largest Topic" , "Most Active Writer", "Number of total Writes"];
