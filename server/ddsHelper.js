@@ -27,7 +27,7 @@ DataReader.prototype.subscribe = function(io) {
 DataReader.prototype.initializeDR = function() {
   this.factory = opendds.initialize("-DCPSConfigFile ./rtps_disc.ini");
   //load pre-compiled library
-  this.library = opendds.load("lib/libNexmatix");
+  this.library = opendds.load("lib/Nexmatix");
   if (!this.library) {
     throw new Error("Could not open support library, make sure idl is compile/path is correct.");
   }

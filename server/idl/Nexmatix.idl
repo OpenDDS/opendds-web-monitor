@@ -1,0 +1,36 @@
+
+
+module Nexmatix {
+
+  enum PresureFault { NO_FAULT, LOW, HIGH };
+
+  #pragma DCPS_DATA_TYPE "Nexmatix::ValveData"
+  #pragma DCPS_DATA_KEY "Nexmatix::ValveData manifoldId"
+  #pragma DCPS_DATA_KEY "Nexmatix::ValveData stationId"
+
+  struct ValveData
+  {
+    // valve identification, location
+    long manifoldId;
+    long stationId;
+    long valveSerialId;
+    string partNumber;
+
+    // fault detect
+    boolean leakFault;
+    PresureFault pressureFault;
+    boolean valveFault;
+
+    // data
+    unsigned long cycles;
+    long pressure;
+
+    // data currently not used by demo javascript
+    long durationLast12;
+    long durationLast14;
+    long equalizationAveragePressure;
+    long equalizationPressureRate;
+    long residualOfDynamicAnalysis;
+    long suppliedPressure;
+  };
+};

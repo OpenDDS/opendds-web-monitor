@@ -1,0 +1,11 @@
+project: dcps, dcps_v8 {
+  libout = ../lib
+  idlflags += -Wb,stub_export_include=Nexmatix_export.h \
+              -Wb,stub_export_macro=Nexmatix_Export
+  dcps_ts_flags += -Wb,export_macro=Nexmatix_Export
+  dynamicflags += NEXMATIX_BUILD_DLL
+
+  TypeSupport_Files {
+    Nexmatix.idl
+  }
+}
