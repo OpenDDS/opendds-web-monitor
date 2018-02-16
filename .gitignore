@@ -46,3 +46,16 @@ Thumbs.db
 #OpenDDS Directories
 /OpenDDS
 /build
+
+#Monitor Libraries
+/server/lib
+/server/idl/GNUmakefile*
+/server/idl/monitorC*
+/server/idl/monitorS*
+/server/idl/lib*
+/server/idl/.*
+/server/idl/NexmatixS*
+/server/idl/NexmatixC*
+/server/idl/NexmatixType*
+/server/idl/monitorType*
+/server/GNUmakefile
