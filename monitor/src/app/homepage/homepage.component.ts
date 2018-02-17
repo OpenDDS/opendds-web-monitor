@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
+import { OpenDdsBridgeService } from '../opendds-bridge.service'
 
 @Component({
   selector: 'app-homepage',
@@ -17,6 +17,8 @@ export class HomepageComponent implements OnInit {
 
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  openddsBridge
+  dataKeys
 
   static itemChange(item, itemComponent) {
      console.info('itemChanged', item, itemComponent);
@@ -27,11 +29,14 @@ export class HomepageComponent implements OnInit {
    }
  
    ngOnInit() {
-     this.options = {
+    this.openddsBridge = new OpenDdsBridgeService()
+    this.dataKeys = Object.keys(this.openddsBridge.data)
+    
+    this.options = {
        itemChangeCallback: HomepageComponent.itemChange,
        itemResizeCallback: HomepageComponent.itemResize,
      };
- 
+
      this.dashboard = [
        {cols: 2, rows: 1, y: 0, x: 0},
        {cols: 2, rows: 2, y: 0, x: 2}
@@ -48,5 +53,9 @@ export class HomepageComponent implements OnInit {
  
    addItem() {
      this.dashboard.push({});
+   }
+ 
+   capitalizeFirstLetter (word) {
+     return word ? word[0].toUpperCase() + word.substr(1) : word
    }
 }

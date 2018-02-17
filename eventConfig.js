@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   connection: "connection",
   process: "process",
   publisher: "publisher",

@@ -3,12 +3,12 @@ import { Observable } from 'rxjs/Observable'
 import { map, catchError } from 'rxjs/operators'
 import * as io from 'socket.io-client'
 import {Socket} from './interfaces'
+import config from '../../../eventConfig'
+import _ from 'lodash'
 
 const URL = 'http://localhost:8080'
 
-const connectionsToCreate = [
-  'topics'
-]
+const connectionsToCreate = _.map(config)
 
 @Injectable()
 export class OpenDdsBridgeService {
@@ -27,18 +27,21 @@ export class OpenDdsBridgeService {
   }
 
   getSocket (keyword) {
-    return new Observable(observer => {
-      this.socket = io(URL)
-      this.socket.on(keyword, (data) => observer.next(data.data))
-      return () => this.socket.disconnect()
-    })
+    return {
+      observable: new Observable(observer => {
+        this.socket = io(URL)
+        this.socket.on(keyword, (data) => observer.next(data.data))
+        return () => this.socket.disconnect()
+      }),
+      keyword
+    }
   }
 
   getConnection (socket) {
     return {
-      socket,
-      connection: socket.subscribe(topic => {
-        this.data.topics.push(topic)
+      socket: socket.observable,
+      connection: socket.observable.subscribe(item => {
+        this.data[socket.keyword].push(item)
       })
     }
   }
