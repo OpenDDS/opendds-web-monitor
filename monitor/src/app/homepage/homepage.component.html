@@ -38,7 +38,7 @@
     </div>
 </nav>
 
-<div width="80%">
+<div class="gridster-container">
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
             <div>{{title2[0] + " " + value2[0]}}</div>
@@ -59,29 +59,4 @@
             <div>{{title2[0] + " " + value2[0]}}</div>
         </gridster-item>
     </gridster>
-</div>
-
-
-<div class="row">
-    <div class="tabledata col-sm-12">
-        <table class="table table-striped">
-            <tbody>
-                <tr>
-                    <td>{{title2[0] + " " + value2[0]}}</td>
-                    <td>{{title2[1] + " " + value2[1]}}</td>
-                    <td>{{title2[2] + " " + value2[2]}}</td>
-                </tr>
-                <tr>
-                    <td>{{title2[3] + " " + value2[3]}}</td>
-                    <td>{{title2[4] + " " + value2[4]}}</td>
-                    <td>{{title2[5] + " " + value2[5]}}</td>
-                </tr>
-                <tr>
-                    <td>{{title2[6] + " " + value2[6]}}</td>
-                    <td>{{title2[7] + " " + value2[7]}}</td>
-                    <td>{{title2[8] + " " + value2[8]}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
