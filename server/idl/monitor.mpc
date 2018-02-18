@@ -1,4 +1,5 @@
-project(OpenDDS_monitor) : dcpslib, install, dds_versioning_idl_defaults {
+project(OpenDDS_monitor) : dcpslib, install, dds_versioning_idl_defaults, dcps_v8 {
+  libout = ../lib
   requires += no_opendds_safety_profile
   sharedname   = OpenDDS_monitor
   dynamicflags = MONITOR_BUILD_DLL
@@ -20,4 +21,5 @@ project(OpenDDS_monitor) : dcpslib, install, dds_versioning_idl_defaults {
   specific {
     install_dir = dds/monitor
   }
+
 }
