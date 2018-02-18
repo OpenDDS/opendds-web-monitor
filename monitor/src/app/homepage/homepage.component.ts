@@ -18,6 +18,8 @@ export class HomepageComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
 
+  
+
   static itemChange(item, itemComponent) {
      console.info('itemChanged', item, itemComponent);
    }
@@ -31,11 +33,23 @@ export class HomepageComponent implements OnInit {
        itemChangeCallback: HomepageComponent.itemChange,
        itemResizeCallback: HomepageComponent.itemResize,
      };
- 
+
      this.dashboard = [
        {cols: 2, rows: 1, y: 0, x: 0},
        {cols: 2, rows: 2, y: 0, x: 2}
      ];
+
+     this.options.draggable = {
+       enabled: true
+       //start: this.removeItem,
+       //stop: this.addItem
+     }
+
+     this.options.resizable = {
+      enabled: true,
+      //start: this.removeItem,
+      //stop: this.addItem
+    }
    }
  
    changedOptions() {
