@@ -8,6 +8,27 @@ Pre-requirements:
 
 4) type 'npm install' into command line, then 'ng serve'
 
+# Compile support libraries
+$ cd server
+# set environmnet variables (for linux)
+$ source ../OpenDDS/setenv.sh  
+$ export V8_ROOT=/usr #for linux
+$ export NAN_ROOT=`pwd`/node_modules/nan
+$ npm install
+$ mwc.pl -type gnuace -exclude OpenDDS
+$ make
+
+# set environmnet variables (for windows)
+set V8_ROOT=%USERPROFILE%\.node-gyp\6.12.3
+set NAN_ROOT=%CD%\node_modules\nan
+npm install
+mwc.pl -type vc14 -exclude OpenDDS
+msbuild iiot_demo_opendds.sln /p:Platform=x64;Configuration=Release
+
+#Compile server (for any)
+node main.js
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
