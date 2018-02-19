@@ -31,7 +31,6 @@ export class OpenDdsBridgeService {
       observable: new Observable(observer => {
         this.socket = io(URL)
         this.socket.on(keyword, (data) => {
-          console.log('event received')
           return observer.next(data)}
         )
         return () => this.socket.disconnect()
@@ -43,9 +42,9 @@ export class OpenDdsBridgeService {
   getConnection (socket) {
     return {
       socket: socket.observable,
-      connection: socket.observable.subscribe(item => {
-        this.data[socket.keyword].push(item)
-        console.log('item', item)
+      connection: socket.observable.subscribe(data => {
+        this.data[socket.keyword].push(data)
+        console.log(`${socket.keyword}`, {data})
       })
     }
   }
