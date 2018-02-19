@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-homepage',
@@ -64,4 +65,16 @@ export class HomepageComponent implements OnInit {
      this.dashboard.push({});
    }
 
+
+  // d3 test implementation
+  tempData: number[] = [30, 86, 168, 281, 303, 365];
+/*
+  d3.select(".chart")
+    .selectAll("div")
+    .data(tempData)
+      .enter()
+      .append("div")
+      .style("width", function(d) { return d + "px"; })
+      .text(function(d) { return d; });
+   */
 }
