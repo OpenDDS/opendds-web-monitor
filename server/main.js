@@ -1,5 +1,5 @@
 var DataReader = require('./ddsHelper')
-const port = 3333;
+const port = 8081;
 var io = require('socket.io').listen(port);
 var events = require('../eventConfig');
 
