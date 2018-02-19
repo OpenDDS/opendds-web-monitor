@@ -6,7 +6,7 @@ import {Socket} from './interfaces'
 import config from '../../../eventConfig'
 import _ from 'lodash'
 
-const URL = 'http://localhost:8080'
+const URL = 'http://localhost:8081'
 
 const connectionsToCreate = _.map(config)
 

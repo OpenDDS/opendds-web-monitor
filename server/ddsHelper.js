@@ -19,7 +19,7 @@ DataReader.prototype.subscribe = function(io) {
       qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscribe, sample);
+        io.emit(events.subscriber, sample);
       }
   )
 }
