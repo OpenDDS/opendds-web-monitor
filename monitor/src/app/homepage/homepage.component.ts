@@ -19,8 +19,6 @@ export class HomepageComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
 
-  
-
   static itemChange(item, itemComponent) {
      console.info('itemChanged', item, itemComponent);
    }
