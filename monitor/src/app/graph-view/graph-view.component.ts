@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
+import { OpenDdsBridgeService } from '../opendds-bridge.service'
 
 @Component({
   selector: 'app-graph-view',
@@ -9,11 +10,7 @@ import * as $ from "jquery";
 export class GraphViewComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit() {
-    this.init();
-  } 
-
+  
   canvas: HTMLCanvasElement;// = <HTMLCanvasElement> $('canvas').get(0);;
   context: CanvasRenderingContext2D;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
 
@@ -24,6 +21,17 @@ export class GraphViewComponent implements OnInit {
   activeTopic: Topic = this.topic;
 
   nodeType: String = "reader";
+
+  openddsBridge;
+  dataKeys;
+
+  ngOnInit() {
+
+    this.openddsBridge = new OpenDdsBridgeService()
+    this.dataKeys = Object.keys(this.openddsBridge.data)
+
+    this.init();
+  } 
 
   init() {
     this.canvas = <HTMLCanvasElement> $('canvas')[0];
