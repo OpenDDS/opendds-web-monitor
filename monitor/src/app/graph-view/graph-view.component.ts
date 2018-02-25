@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
-//import './graph-view.js';
-
-//declare function init();
 
 @Component({
   selector: 'app-graph-view',
@@ -14,8 +11,56 @@ export class GraphViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    init();
+    this.init();
+  } 
+
+  canvas: HTMLCanvasElement;// = <HTMLCanvasElement> $('canvas').get(0);;
+  context: CanvasRenderingContext2D;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
+
+  topic: Topic = new Topic('T', 300, 300);
+  reader: Reader = new Reader('R', 50, 50);
+  writer: Writer = new Writer('W', 400, 500);
+
+  activeTopic: Topic = this.topic;
+
+  nodeType: String = "reader";
+
+  init() {
+    this.canvas = <HTMLCanvasElement> $('canvas')[0];
+    this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
+    this.context.canvas.width  = window.innerWidth;
+    this.context.canvas.height = window.innerHeight;
+
+    this.topic.connections.push(this.reader);
+    this.topic.connections.push(this.writer);
+      
+    this.topic.draw(this.context);
+    this.reader.draw(this.context);
+    this.writer.draw(this.context);
+    console.log("canavas drawn!");
   }
+
+  addNode(event) {
+    console.log("clicked canvas!");
+    let newNode: Node;
+    //canvas = $('canvas').get(0);
+    //context = canvas.getContext('2d');
+    switch (this.nodeType) {
+      case 'reader':
+        newNode = new Reader('R', event.pageX, event.pageY);
+        break;
+      case 'writer':
+        newNode = new Writer('W', event.pageX, event.pageY);
+        break;
+      case 'topic':
+        newNode = new Topic('T', event.pageX, event.pageY);
+        this.activeTopic = <Topic>newNode;
+        break;
+    }
+    this.activeTopic.connections.push(newNode);
+    newNode.draw(this.context);
+    this.activeTopic.draw(this.context);      
+  };  
 }
 
 class Node {
@@ -112,55 +157,3 @@ class Topic extends Node {
 class Domain {
   
 }
-
-var canvas;// = <HTMLCanvasElement> $('canvas').get(0);;
-var context;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
-
-var topic = new Topic('T', 300, 300);
-var reader = new Reader('R', 50, 50);
-var writer = new Writer('W', 400, 500);
-
-function init() {
-  canvas = <HTMLCanvasElement> $('canvas')[0];
-  context = <CanvasRenderingContext2D> canvas.getContext("2d");
-  context.canvas.width  = window.innerWidth;
-  context.canvas.height = window.innerHeight;
-
-  topic.connections.push(reader);
-  topic.connections.push(writer);
-    
-  topic.draw(context);
-  reader.draw(context);
-  writer.draw(context);
-  console.log("canavas drawn!");
-}
-
-/*
-$(document).ready(function() {  
-  canvas = $('canvas')[0];
-  context = canvas.getContext("2d");
-  context.canvas.width  = window.innerWidth;
-  context.canvas.height = window.innerHeight;
-
-  topic.connections.push(reader);
-  topic.connections.push(writer);
-    
-  topic.draw(context);
-  reader.draw(context);
-  writer.draw(context);
-  console.log("canavas drawn!");
-});
-*/
-
-$(canvas).click(function(event) {
-
-  console.log("clicked canvas!");
-  //canvas = $('canvas').get(0);
-  //context = canvas.getContext('2d');
-            
-  var newNode = new Reader('R', event.pageX, event.pageY);
-  topic.connections.push(newNode);
-  newNode.draw(context);
-  topic.draw(context);
-            
-});  

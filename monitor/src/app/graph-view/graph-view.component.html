@@ -40,7 +40,11 @@
           </div>
       </nav>
 
-    <canvas></canvas>
+    <button (click)="this.nodeType = 'reader'">Reader</button>
+    <button (click)="this.nodeType = 'writer'">Writer</button>
+    <button (click)="this.nodeType = 'topic'">Topic</button>
+
+    <canvas (click)="this.addNode($event)"></canvas>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
