@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
-import { GridsterConfig, GridsterItem }  from 'angular-gridster2'
+import { GridsterConfig, GridsterItem } from 'angular-gridster2'
 import * as d3 from 'd3'
 
 @Component({
@@ -29,12 +29,12 @@ export class HomepageComponent implements OnInit {
      this.options = {
        itemChangeCallback: HomepageComponent.itemChange,
        itemResizeCallback: HomepageComponent.itemResize,
-     };
+     }
 
      this.dashboard = [
        {cols: 2, rows: 1, y: 0, x: 0},
        {cols: 2, rows: 2, y: 0, x: 2}
-     ];
+     ]
 
      this.options.draggable = {
        enabled: true
@@ -59,7 +59,7 @@ export class HomepageComponent implements OnInit {
    }
   // d3 test implementation
   tempData: number[] = [30, 86, 168, 281, 303, 365];
-/*
+
   d3.select(".chart")
     .selectAll("div")
     .data(tempData)
@@ -67,5 +67,4 @@ export class HomepageComponent implements OnInit {
       .append("div")
       .style("width", function(d) { return d + "px"; })
       .text(function(d) { return d; });
-   */
 }
