@@ -47,6 +47,10 @@ export class HomepageComponent implements OnInit {
       // start: this.removeItem,
       // stop: this.addItem
     }
+
+    this.options.swap = true;
+
+    this.initDashboard();
    }
    changedOptions() {
      this.options.api.optionsChanged()
@@ -54,8 +58,20 @@ export class HomepageComponent implements OnInit {
    removeItem(item) {
      this.dashboard.splice(this.dashboard.indexOf(item), 1)
    }
+
+  
+  addItem(item: GridsterItem) { this.dashboard.push(item); }
+   /*
    addItem() {
      this.dashboard.push({})
+   }
+
+   */  
+
+   initDashboard() {
+     //get data
+     let myGirdsterItem: GridsterItem = undefined;//turn into gridster item
+     this.addItem( myGirdsterItem );
    }
   // d3 test implementation
   // tempData: number[] = [30, 86, 168, 281, 303, 365];
