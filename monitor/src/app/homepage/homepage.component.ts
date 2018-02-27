@@ -58,13 +58,13 @@ export class HomepageComponent implements OnInit {
      this.dashboard.push({})
    }
   // d3 test implementation
-  tempData: number[] = [30, 86, 168, 281, 303, 365];
+  // tempData: number[] = [30, 86, 168, 281, 303, 365];
 
-  d3.select(".chart")
+  /* d3.select(".chart")
     .selectAll("div")
     .data(tempData)
       .enter()
       .append("div")
       .style("width", function(d) { return d + "px"; })
-      .text(function(d) { return d; });
+      .text(function(d) { return d; }); */
 }
