@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
-import * as d3 from 'd3';
+import { GridsterConfig, GridsterItem }  from 'angular-gridster2'
+import * as d3 from 'd3'
 
 @Component({
   selector: 'app-homepage',
@@ -10,23 +10,21 @@ import * as d3 from 'd3';
 })
 
 export class HomepageComponent implements OnInit {
-  title2 = [ "Number of Consumers", "Number of Producers","Number of Data Readers", "Number of Data Writers", "Number of Samples" ,
-  "Number of Topics", "Largest Topic" , "Most Active Writer", "Number of total Writes"];
-  value2 = [ "23", "234" , "234", "234", "234", "234", "234", "234", "234"];
+  title2 = [ 'Number of Consumers', 'Number of Producers', 'Number of Data Readers', 'Number of Data Writers', 'Number of Samples',
+  'Number of Topics', 'Largest Topic' , 'Most Active Writer', 'Number of total Writes']
+  value2 = [ '23', '234' , '234', '234', '234', '234', '234', '234', '234']
 
   constructor() { }
 
-  options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
+  options: GridsterConfig
+  dashboard: Array<GridsterItem>
 
   static itemChange(item, itemComponent) {
-     console.info('itemChanged', item, itemComponent);
+     console.info('itemChanged', item, itemComponent)
    }
- 
    static itemResize(item, itemComponent) {
-     console.info('itemResized', item, itemComponent);
+     console.info('itemResized', item, itemComponent)
    }
- 
    ngOnInit() {
      this.options = {
        itemChangeCallback: HomepageComponent.itemChange,
@@ -40,30 +38,25 @@ export class HomepageComponent implements OnInit {
 
      this.options.draggable = {
        enabled: true
-       //start: this.removeItem,
-       //stop: this.addItem
+       // start: this.removeItem,
+       // stop: this.addItem
      }
 
      this.options.resizable = {
       enabled: true,
-      //start: this.removeItem,
-      //stop: this.addItem
+      // start: this.removeItem,
+      // stop: this.addItem
     }
    }
- 
    changedOptions() {
-     this.options.api.optionsChanged();
+     this.options.api.optionsChanged()
    }
- 
    removeItem(item) {
-     this.dashboard.splice(this.dashboard.indexOf(item), 1);
+     this.dashboard.splice(this.dashboard.indexOf(item), 1)
    }
- 
    addItem() {
-     this.dashboard.push({});
+     this.dashboard.push({})
    }
-
-
   // d3 test implementation
   tempData: number[] = [30, 86, 168, 281, 303, 365];
 /*
