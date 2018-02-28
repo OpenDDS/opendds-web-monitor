@@ -1,8 +1,6 @@
 var opendds = require('opendds');
 var events = require('../eventConfig');
 
-
-
 function DDSObserver() {
   this.factory = null
   this.library = null
@@ -11,9 +9,12 @@ function DDSObserver() {
   this.qos = {     
     DDSObserverQos: { durability: "TRANSIENT_LOCAL_DURABILITY_QOS" }
   }
-  this.domainID = -999
+  this.domainID = -999 //domainid constant for monitor.idl
 }
 
+// ServiceParticipant subscribe method
+// Finds a topic "Service Participant Monitor"
+// with key "OpenDDS::DCPS::ServiceParticipantReport"
 DDSObserver.prototype.ServiceParticipant = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -27,6 +28,9 @@ DDSObserver.prototype.ServiceParticipant = function(io) {
   )
 }
 
+// DomainParticipant subscribe method
+// Finds a topic "Domain Participant Monitor"
+// with key "OpenDDS::DCPS::DomainParticipantReport"
 DDSObserver.prototype.DomainParticipant = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -40,6 +44,9 @@ DDSObserver.prototype.DomainParticipant = function(io) {
   )
 }
 
+// Topic subscribe method
+// Finds a topic "Topic Monitor"
+// with key "OpenDDS::DCPS::TopicReport"
 DDSObserver.prototype.Topic = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -53,6 +60,9 @@ DDSObserver.prototype.Topic = function(io) {
   )
 }
 
+// Publisher subscribe method
+// Finds a topic "Publisher Monitor"
+// with key "OpenDDS::DCPS::PublisherReport"
 DDSObserver.prototype.Publisher = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -66,6 +76,9 @@ DDSObserver.prototype.Publisher = function(io) {
   )
 }
 
+// Subscriber subscribe method
+// Finds a topic "Subscriber Monitor"
+// with key "OpenDDS::DCPS::SubscriberReport"
 DDSObserver.prototype.Subscriber = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -79,6 +92,9 @@ DDSObserver.prototype.Subscriber = function(io) {
   )
 }
 
+// DataWriter subscribe method
+// Finds a topic "Data Writer Monitor"
+// with key "OpenDDS::DCPS::DataWriterReport"
 DDSObserver.prototype.DataWriter = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -92,6 +108,9 @@ DDSObserver.prototype.DataWriter = function(io) {
   )
 }
 
+// DataReader subscribe method
+// Finds a topic "Data Reader Monitor"
+// with key "OpenDDS::DCPS::DataReaderReport"
 DDSObserver.prototype.DataReader = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -105,6 +124,9 @@ DDSObserver.prototype.DataReader = function(io) {
   )
 }
 
+// Transport subscribe method
+// Finds a topic "Transport Monitor"
+// with key "OpenDDS::DCPS::TransportReport"
 DDSObserver.prototype.Transport = function(io) {
   //Subscribe to any publishers with defined tags (second param)
   this.topic = this.participant.subscribe(
@@ -118,14 +140,18 @@ DDSObserver.prototype.Transport = function(io) {
   )
 }
 
-DDSObserver.prototype.initializeDR = function() {
+// InitializeDO method
+// Initialized OpenDDS node module and loads monitor IDL
+// Creates participant of factory. 
+DDSObserver.prototype.initializeDO = function() {
   this.factory = opendds.initialize('-DCPSInfoRepo localhost:12345');
   //load pre-compiled library
   this.library = opendds.load("idl/libOpenDDS_monitor");
   if (!this.library) {
     throw new Error("Could not open support library, make sure idl is compile/path is correct.");
   }
-  //initialize participant with opendds module
+  // initialize participant with opendds module
+  // DomainID is specific to OpenDDS Monitor IDL
   this.participant = this.factory.create_participant(this.domainID);
 }
 

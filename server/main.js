@@ -11,8 +11,8 @@ io.on(events.connection, function(socket) {
 
 //DDSObserver initialization 
 var DDSObserver = new DDSObserver();
-DDSObserver.initializeDR();
-//subscribe and send over the socket already created
+DDSObserver.initializeDO();
+//Create event for each possible monitor type
 DDSObserver.ServiceParticipant(io);
 DDSObserver.DomainParticipant(io);
 DDSObserver.Topic(io);
