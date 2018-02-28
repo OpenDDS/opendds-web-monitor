@@ -59,3 +59,4 @@ Thumbs.db
 /server/idl/NexmatixType*
 /server/idl/monitorType*
 /server/GNUmakefile
+/server/repo.ior

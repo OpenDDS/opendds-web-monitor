@@ -1,4 +1,4 @@
-var DataReader = require('./ddsHelper')
+var DDSObserver = require('./ddsHelper')
 const port = 8081;
 var io = require('socket.io').listen(port);
 var events = require('../eventConfig');
@@ -9,8 +9,15 @@ io.on(events.connection, function(socket) {
   console.log('New connection from ' + address.address + ':' + address.port);
 });
 
-//DataReader initialization 
-var DataReader = new DataReader();
-DataReader.initializeDR();
+//DDSObserver initialization 
+var DDSObserver = new DDSObserver();
+DDSObserver.initializeDR();
 //subscribe and send over the socket already created
-DataReader.subscribe(io);
+DDSObserver.ServiceParticipant(io);
+DDSObserver.DomainParticipant(io);
+DDSObserver.Topic(io);
+DDSObserver.Publisher(io);
+DDSObserver.Subscriber(io);
+DDSObserver.DataWriter(io);
+DDSObserver.DataReader(io);
+DDSObserver.Transport(io);

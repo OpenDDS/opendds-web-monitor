@@ -1,7 +1,11 @@
 module.exports = {
   connection: "connection",
-  process: "process",
-  publisher: "publisher",
-  subscriber: "subscriber",
-  topic: "topic",
+  Subscriber: "Subscriber",
+  Publisher: "Publisher",
+  ServiceParticipant: "ServiceParticipant",
+  DomainParticipant: "DomainParticipant",
+  Topic: "Topic",
+  DataWriter: "DataWriter",
+  DataReader: "DataReader",
+  Transport: "Transport"
 }
