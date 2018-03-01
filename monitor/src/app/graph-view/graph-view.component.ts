@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
+import { GraphService } from './graph.service';
 
 @Component({
   selector: 'app-graph-view',
   templateUrl: './graph-view.component.html',
-  styleUrls: ['./graph-view.component.css']
+  styleUrls: ['./graph-view.component.css'],
+  providers: [GraphService, OpenDdsBridgeService]
 })
 export class GraphViewComponent implements OnInit {
 
-  constructor() { }
+  openddsBridge: OpenDdsBridgeService;
+  graphService: GraphService;
+
+  constructor(graphService: GraphService, openddsBridge: OpenDdsBridgeService) { 
+    this.openddsBridge = openddsBridge;
+    this.graphService = graphService;
+  }
   
   canvas: HTMLCanvasElement;// = <HTMLCanvasElement> $('canvas').get(0);;
   context: CanvasRenderingContext2D;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
@@ -22,12 +30,11 @@ export class GraphViewComponent implements OnInit {
 
   nodeType: String = "reader";
 
-  openddsBridge;
   dataKeys;
 
   ngOnInit() {
 
-    this.openddsBridge = new OpenDdsBridgeService()
+    //this.openddsBridge = new OpenDdsBridgeService()
     this.dataKeys = Object.keys(this.openddsBridge.data)
 
     this.init();
@@ -69,7 +76,13 @@ export class GraphViewComponent implements OnInit {
     newNode.draw(this.context);
     this.activeTopic.draw(this.context);      
   };  
+
 }
+
+
+////////////////////////////////////////
+// Additional classes for drawing     //
+////////////////////////////////////////
 
 class Node {
   text: string;
