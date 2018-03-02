@@ -1,7 +1,7 @@
 <ng-sidebar-container>
   <ng-sidebar [(opened)]="opened">
     <nav class="nav nav-pills flex-column nav-justified">
-      <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" [href]="navItem.link">
+      <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" [routerLink]="navItem.link">
         <fa [name]="navItem.icon"></fa> {{navItem.title}}
       </a>
     </nav>
@@ -11,7 +11,7 @@
   </ng-sidebar>
   <div id="mainContent" ng-sidebar-content>
     <nav id="collapsedNav" class="nav nav-pills flex-column nav-justified bg-light">
-      <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" [href]="navItem.link">
+      <a *ngFor="let navItem of navItems" title="{{'Navigate to ' + navItem.title}}" class="nav-link" [routerLink]="navItem.link">
         <fa [name]="navItem.icon"></fa>
       </a>
       <button (click)="toggleSidebar()" class="btn btn-primary sidebarToggle">

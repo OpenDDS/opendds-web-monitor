@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GraphService } from './graph.service';
+//import * as io from 'socket.io';
+import config from '../../../../eventConfig.js';
 
 @Component({
   selector: 'app-graph-view',
@@ -32,12 +34,19 @@ export class GraphViewComponent implements OnInit {
 
   dataKeys;
 
+  pubSocket;
+
   ngOnInit() {
 
-    //this.openddsBridge = new OpenDdsBridgeService()
+    this.openddsBridge = new OpenDdsBridgeService()
     this.dataKeys = Object.keys(this.openddsBridge.data)
 
     this.init();
+
+    //this.pubSocket = io(this.openddsBridge.getSocket('Publisher'));
+    this.pubSocket.on('Publisher', function (data) {
+      this.addNode();
+    });
   } 
 
   init() {
