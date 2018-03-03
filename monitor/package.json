@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -H 0.0.0.0",
+    "start:fake": "ng serve -H 0.0.0.0 --env=fakeData",
     "build": "ng build",
     "test": "ng test --single-run",
     "test:dev": "ng test",

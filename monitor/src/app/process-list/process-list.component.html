@@ -56,14 +56,77 @@
           <ngb-panel *ngFor="let domainParticipant of openddsBridge.data.DomainParticipant" title="{{ domainParticipant.host }}">
             <ng-template ngbPanelContent>
               <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-                <ngb-panel *ngFor="let topic of mapTopics(domainParticipant.dp_id)" title="{{ topic.topic_name }}">
-                  <!-- <ng-template ngbPanelContent>
-                    <div class="card-body">
-                      <p *ngFor="let data of topic.datas" style="font-size: 16px">
-                        {{ data }}
-                      </p>
-                    </div>
-                  </ng-template> -->
+                <ngb-panel title="Topics (count={{mapTopics(domainParticipant.dp_id).length}})">
+                  <ng-template ngbPanelContent>
+                    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                      <ngb-panel *ngFor="let topic of mapTopics(domainParticipant.dp_id)" title="{{ topic.topic_name }}">
+                        <ng-template ngbPanelContent>
+                          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                            <ngb-panel title="Publishers (count={{mapPublishers(domainParticipant.dp_id).length}})">
+                              <ng-template ngbPanelContent>
+                                <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                                  <ngb-panel *ngFor="let publisher of mapPublishersByTopic(domainParticipant.dp_id, topic.topic_id)" title="Publisher (handle={{publisher.handle}}, transportId={{publisher.transport_id}})">
+                                    <ng-template ngbPanelContent>
+                                      <div class="card-body">
+                                        <p *ngFor="let writer of publisher.writers" style="font-size: 16px">
+                                          Writer: {{ writer }}
+                                        </p>
+                                      </div>
+                                    </ng-template>
+                                  </ngb-panel>
+                                </ngb-accordion>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel title="Subscribers (count={{mapSubscriberByTopic(domainParticipant.dp_id, topic.topic_id).length}})">
+                              <ng-template ngbPanelContent>
+                                <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                                  <ngb-panel *ngFor="let subscriber of mapSubscriberByTopic(domainParticipant.dp_id, topic.topic_id)" title="Subscriber (handle={{subscriber.handle}}, transportId={{subscriber.transport_id}})">
+                                    <ng-template ngbPanelContent>
+                                      <div class="card-body">
+                                        <p *ngFor="let reader of subscriber.readers" style="font-size: 16px">
+                                          Reader: {{ reader }}
+                                        </p>
+                                      </div>
+                                    </ng-template>
+                                  </ngb-panel>
+                                </ngb-accordion>
+                              </ng-template>
+                            </ngb-panel>
+                          </ngb-accordion>
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel title="Publishers (count={{mapPublishers(domainParticipant.dp_id).length}})">
+                  <ng-template ngbPanelContent>
+                    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                      <ngb-panel *ngFor="let publisher of mapPublishers(domainParticipant.dp_id)" title="Publisher (handle={{publisher.handle}}, transportId={{publisher.transport_id}})">
+                        <ng-template ngbPanelContent>
+                          <div class="card-body">
+                            <p *ngFor="let writer of publisher.writers" style="font-size: 16px">
+                              Writer: {{ writer }}
+                            </p>
+                          </div>
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel title="Subscribers (count={{mapSubscriber(domainParticipant.dp_id).length}})">
+                  <ng-template ngbPanelContent>
+                    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                      <ngb-panel *ngFor="let subscriber of mapSubscriber(domainParticipant.dp_id)" title="Subscriber (handle={{subscriber.handle}}, transportId={{subscriber.transport_id}})">
+                        <ng-template ngbPanelContent>
+                          <div class="card-body">
+                            <p *ngFor="let reader of subscriber.readers" style="font-size: 16px">
+                              Reader: {{ reader }}
+                            </p>
+                          </div>
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+                  </ng-template>
                 </ngb-panel>
               </ngb-accordion>
             </ng-template>
