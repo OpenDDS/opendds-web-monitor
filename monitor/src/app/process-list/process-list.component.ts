@@ -9,7 +9,10 @@ import { OpenDdsBridgeService } from '../opendds-bridge.service'
 })
 
 export class ProcessListComponent implements OnInit {
+  openddsBridge
+
   constructor(openddsBridge : OpenDdsBridgeService) {
+    this.openddsBridge = openddsBridge
     console.log('here', openddsBridge)
   }
 
