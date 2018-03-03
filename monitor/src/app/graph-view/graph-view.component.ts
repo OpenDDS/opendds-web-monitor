@@ -76,6 +76,8 @@ export class GraphViewComponent implements OnInit {
     */
 
     // load from openddsBridge
+    // how lines are drawn might be inaccurate
+    // it depends on how the time 
     this.dataKeys.forEach( (key) => {
       switch (key) {
         case eventTypes.Subscriber:
@@ -87,13 +89,19 @@ export class GraphViewComponent implements OnInit {
         case eventTypes.DomainParticipant:
           break;
         case eventTypes.Topic:
-          this.topics.push(new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          const newTopic = new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          this.topics.push(newTopic);
+          this.activeTopic = newTopic;
           break;
         case eventTypes.DataWriter:
-          this.writers.push(new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          const newWriter = new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          this.writers.push(newWriter);
+          this.activeTopic.connections.push(newWriter);
           break;
         case eventTypes.DataReader:
-        this.readers.push(new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          const newReader = new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          this.readers.push(newReader);
+          this.activeTopic.connections.push(newReader);
           break;
         case eventTypes.Transport:
           break;

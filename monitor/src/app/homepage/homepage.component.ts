@@ -54,7 +54,7 @@ export class HomepageComponent implements OnInit {
     }
 
     this.options.swap = true
-
+    
     this.initDashboard()
   }
 
