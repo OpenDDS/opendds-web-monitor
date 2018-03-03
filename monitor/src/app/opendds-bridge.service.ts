@@ -5,6 +5,7 @@ import * as io from 'socket.io-client'
 import { Socket } from './interfaces'
 import config from '../../../eventConfig'
 import _ from 'lodash'
+import { ModuleWithProviders } from '@angular/compiler/src/core'
 
 const URL = 'http://localhost:8081'
 
@@ -15,6 +16,7 @@ export class OpenDdsBridgeService {
   private socket
   private connections
 
+  // data accesed like so: 'data.subscriber', where 'subscriber' is whatever you want to query
   data
 
   constructor() {
@@ -22,14 +24,16 @@ export class OpenDdsBridgeService {
     this.connections = {}
     connectionsToCreate.forEach((item) => {
       this.data[item] = []
-      this.connections[item] = this.getConnection(this.getSocket(item))
+      this.connections[item] = this.getConnection(item)
     })
   }
 
+  // The socket is wrapped in an observable because it takes care of auto updating when new data comes in on the socket
   getSocket (keyword) {
     return {
       observable: new Observable(observer => {
         this.socket = io(URL)
+        // This is where the socket 'events' are handled
         this.socket.on(keyword, (data) => {
           return observer.next(data)}
         )
@@ -39,10 +43,12 @@ export class OpenDdsBridgeService {
     }
   }
 
-  getConnection (socket) {
+  getConnection (item) {
+    const socket = this.getSocket(item)
     return {
       socket: socket.observable,
       connection: socket.observable.subscribe(data => {
+        // This is where the data is put inside the this.data holder.
         this.data[socket.keyword].push(data)
         console.log(`${socket.keyword}`, {data})
       })

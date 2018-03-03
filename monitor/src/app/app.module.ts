@@ -15,6 +15,7 @@ import { GraphViewComponent } from './graph-view/graph-view.component';
 import { OpenDdsBridgeService } from './opendds-bridge.service';
 import { GridsterModule } from 'angular-gridster2';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +32,12 @@ import { GridsterModule } from 'angular-gridster2';
     AppRoutingModule,
     GridsterModule
   ],
-  providers: [
-    OpenDdsBridgeService,
-  ],
+  providers: [OpenDdsBridgeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  openddsBridge
+  constructor () {
+    this.openddsBridge = new OpenDdsBridgeService()
+  }
+}
