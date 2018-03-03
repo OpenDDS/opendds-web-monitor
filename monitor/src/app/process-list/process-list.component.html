@@ -53,17 +53,17 @@
       </main>
       <div class="col-12" id="accordion" role="tablist">
         <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-          <ngb-panel *ngFor="let process of openddsBridge.data.process" title="{{ process.title }}">
+          <ngb-panel *ngFor="let domainParticipant of openddsBridge.data.DomainParticipant" title="{{ domainParticipant.host }}">
             <ng-template ngbPanelContent>
               <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-                <ngb-panel *ngFor="let topic of process.topics" title="{{ topic.title }}">
-                  <ng-template ngbPanelContent>
+                <ngb-panel *ngFor="let topic of mapTopics(domainParticipant.dp_id)" title="{{ topic.topic_name }}">
+                  <!-- <ng-template ngbPanelContent>
                     <div class="card-body">
                       <p *ngFor="let data of topic.datas" style="font-size: 16px">
                         {{ data }}
                       </p>
                     </div>
-                  </ng-template>
+                  </ng-template> -->
                 </ngb-panel>
               </ngb-accordion>
             </ng-template>
