@@ -23,7 +23,7 @@ DDSObserver.prototype.ServiceParticipant = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.ServiceParticipant, sample);
       }
   )
 }
@@ -39,7 +39,7 @@ DDSObserver.prototype.DomainParticipant = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.DomainParticipant, sample);
       }
   )
 }
@@ -55,7 +55,7 @@ DDSObserver.prototype.Topic = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.Topic, sample);
       }
   )
 }
@@ -71,7 +71,7 @@ DDSObserver.prototype.Publisher = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.Publisher, sample);
       }
   )
 }
@@ -87,7 +87,7 @@ DDSObserver.prototype.Subscriber = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.Subscriber, sample);
       }
   )
 }
@@ -103,7 +103,7 @@ DDSObserver.prototype.DataWriter = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.DataWriter, sample);
       }
   )
 }
@@ -119,7 +119,7 @@ DDSObserver.prototype.DataReader = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.DataReader, sample);
       }
   )
 }
@@ -135,7 +135,7 @@ DDSObserver.prototype.Transport = function(io) {
       this.qos,
       function(dr, sinfo, sample) {
         console.log(sample);
-        io.emit(events.subscriber, sample);
+        io.emit(events.Transport, sample);
       }
   )
 }
