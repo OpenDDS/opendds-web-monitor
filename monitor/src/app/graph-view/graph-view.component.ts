@@ -76,31 +76,29 @@ export class GraphViewComponent implements OnInit {
     */
 
     // load from openddsBridge
-    for (let key of this.dataKeys) {
-      for (let data of this.openddsBridge.data[key]) {
-        switch (key) {
-          case eventTypes.Subscriber:
-            break;
-          case eventTypes.Publisher:
-            break;
-          case eventTypes.ServiceParticipant:
-            break;
-          case eventTypes.DomainParticipant:
-            break;
-          case eventTypes.Topic:
-            this.topics.push(new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
-            break;
-          case eventTypes.DataWriter:
-            this.writers.push(new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
-            break;
-          case eventTypes.DataReader:
-           this.readers.push(new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
-            break;
-          case eventTypes.Transport:
-            break;
-        }
+    this.dataKeys.forEach( (key) => {
+      switch (key) {
+        case eventTypes.Subscriber:
+          break;
+        case eventTypes.Publisher:
+          break;
+        case eventTypes.ServiceParticipant:
+          break;
+        case eventTypes.DomainParticipant:
+          break;
+        case eventTypes.Topic:
+          this.topics.push(new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          break;
+        case eventTypes.DataWriter:
+          this.writers.push(new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          break;
+        case eventTypes.DataReader:
+        this.readers.push(new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+          break;
+        case eventTypes.Transport:
+          break;
       }
-    }
+    })
 
     // draw nodes on canvas
     for (let topic of this.topics) {
