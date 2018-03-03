@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GridsterConfig, GridsterItem } from 'angular-gridster2'
-import * as d3 from 'd3'
 
 @Component({
   selector: 'app-homepage',
