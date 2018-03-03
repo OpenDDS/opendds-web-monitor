@@ -50,8 +50,7 @@
 <div style="width: 100%; height: 100vh">
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
-            <div>Number of {{ item.title }}</div>
-            <div>{{ item.num }}</div>
+            <div>Number of {{ item.title }}: {{ item.num }}</div>
         </gridster-item>
     </gridster>
 </div>
