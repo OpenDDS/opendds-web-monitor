@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GraphService } from './graph.service';
-//import * as io from 'socket.io';
-import config from '../../../../eventConfig.js';
 
 @Component({
   selector: 'app-graph-view',
@@ -14,6 +12,7 @@ import config from '../../../../eventConfig.js';
 export class GraphViewComponent implements OnInit {
 
   openddsBridge: OpenDdsBridgeService;
+  dataKeys: string[];
   graphService: GraphService;
 
   constructor(graphService: GraphService, openddsBridge: OpenDdsBridgeService) { 
@@ -32,21 +31,10 @@ export class GraphViewComponent implements OnInit {
 
   nodeType: String = "reader";
 
-  dataKeys;
-
-  pubSocket;
-
   ngOnInit() {
-
-    this.openddsBridge = new OpenDdsBridgeService()
     this.dataKeys = Object.keys(this.openddsBridge.data)
 
     this.init();
-
-    //this.pubSocket = io(this.openddsBridge.getSocket('Publisher'));
-    this.pubSocket.on('Publisher', function (data) {
-      this.addNode();
-    });
   } 
 
   init() {
@@ -57,10 +45,17 @@ export class GraphViewComponent implements OnInit {
 
     this.topic.connections.push(this.reader);
     this.topic.connections.push(this.writer);
-      
+    
+    /*
     this.topic.draw(this.context);
     this.reader.draw(this.context);
     this.writer.draw(this.context);
+    */
+
+    for (let key of this.dataKeys) {
+      
+    }
+
     console.log("canavas drawn!");
   }
 
