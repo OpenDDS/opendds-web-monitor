@@ -16,10 +16,9 @@ export class GraphViewComponent implements OnInit {
   dataKeys: string[];sq
   graphService: GraphService;
   
-  nodes: Node[];
-  topics: Topic[];
-  readers: Reader[];
-  writers: Writer[];
+  topics: Topic[] = [];
+  readers: Reader[] = [];
+  writers: Writer[] = [];
 
   constructor(graphService: GraphService, openddsBridge: OpenDdsBridgeService) { 
     this.openddsBridge = openddsBridge;
@@ -103,6 +102,7 @@ export class GraphViewComponent implements OnInit {
       }
     }
 
+    // draw nodes on canvas
     for (let topic of this.topics) {
       topic.draw(this.context);
     }
@@ -112,6 +112,7 @@ export class GraphViewComponent implements OnInit {
     for (let writer of this.writers) {
       writer.draw(this.context);
     }
+
     console.log("canavas drawn!");
   }
 
