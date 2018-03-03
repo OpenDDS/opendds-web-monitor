@@ -49,9 +49,9 @@
 
 <div style="width: 100%; height: 500px">
     <gridster [options]="options">
-        <gridster-item [item]="item" *ngFor="let key of dataKeys">
-            <div>Number of {{ capitalizeFirstLetter(key) }}
-            {{ this.openddsBridge.data[key].length }}</div>
+        <gridster-item [item]="item" *ngFor="let item of dashboard">
+            <div>Number of {{ item.title }}</div>
+            <div>{{ item.num }}</div>
         </gridster-item>
-    <gridster>
+    </gridster>
 </div>

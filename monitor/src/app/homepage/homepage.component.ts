@@ -14,21 +14,9 @@ export class HomepageComponent implements OnInit {
 
   openddsBridge: OpenDdsBridgeService;
   dataKeys: string[];
-  numPub = this.openddsBridge.data(this.dataKeys)
-  numSub = 23
-  numDR = 23
-  numDW = 23
-  numSamples = 23
-  numTopics = 234
-  largestTopic = 234
-  mostActiveWriter = 234
-  totalWrites = 234
   
   title2 = [ 'Number of Publishers', 'Number of Subscribers', 'Number of Data Readers', 'Number of Data Writers', 'Number of Samples',
   'Number of Topics', 'Largest Topic' , 'Most Active Writer', 'Number of total Writes']
-   value2 = [ this.numPub , this.numSub , this.numDR, this.numDW, this.numSamples, 
-   this.numTopics, this.largestTopic, this.mostActiveWriter, this.totalWrites]
-  // totalVals = 9
 
   constructor(openddsBridge: OpenDdsBridgeService) { 
     this.openddsBridge = openddsBridge;
@@ -84,10 +72,16 @@ export class HomepageComponent implements OnInit {
   addItem(item: GridsterItem) { this.dashboard.push(item) }
    
   initDashboard() {
+
      // get data
-     let myGirdsterItem: GridsterItem // turn into gridster item
-     this.addItem( myGirdsterItem )
-     this.dashboard.push()
+     //let myGirdsterItem: GridsterItem // turn into gridster item
+     //this.addItem( myGirdsterItem )
+    let gridsterItem: GridsterItem
+    for (let key in this.dataKeys){
+      gridsterItem.title = key
+      gridsterItem.num = this.openddsBridge.data[key].length
+      this.dashboard.push(gridsterItem)
+    }
    }
   // d3 test implementation
   // tempData: number[] = [30, 86, 168, 281, 303, 365];
