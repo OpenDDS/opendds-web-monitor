@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GraphService } from './graph.service';
+import eventTypes from '../../../../eventConfig.js';
 
 @Component({
   selector: 'app-graph-view',
@@ -12,8 +13,13 @@ import { GraphService } from './graph.service';
 export class GraphViewComponent implements OnInit {
 
   openddsBridge: OpenDdsBridgeService;
-  dataKeys: string[];
+  dataKeys: string[];sq
   graphService: GraphService;
+  
+  nodes: Node[];
+  topics: Topic[];
+  readers: Reader[];
+  writers: Writer[];
 
   constructor(graphService: GraphService, openddsBridge: OpenDdsBridgeService) { 
     this.openddsBridge = openddsBridge;
@@ -43,8 +49,8 @@ export class GraphViewComponent implements OnInit {
     this.context.canvas.width  = window.innerWidth;
     this.context.canvas.height = window.innerHeight;
 
-    this.topic.connections.push(this.reader);
-    this.topic.connections.push(this.writer);
+    // this.topic.connections.push(this.reader);
+    // this.topic.connections.push(this.writer);
     
     /*
     this.topic.draw(this.context);
@@ -52,10 +58,60 @@ export class GraphViewComponent implements OnInit {
     this.writer.draw(this.context);
     */
 
+    /*
+    this.openddsBridge.data is structured like this...
+    data {
+      publisher {
+          publisher1
+          publisher2
+      }
+      topic: {
+
+      }
+      key3: {
+
+      }
+      ...
+    }
+    this.dataKeys looks like ['key1', 'key2', 'key3', ...]
+    */
+
+    // load from openddsBridge
     for (let key of this.dataKeys) {
-      
+      for (let data of this.openddsBridge.data[key]) {
+        switch (key) {
+          case eventTypes.Subscriber:
+            break;
+          case eventTypes.Publisher:
+            break;
+          case eventTypes.ServiceParticipant:
+            break;
+          case eventTypes.DomainParticipant:
+            break;
+          case eventTypes.Topic:
+            this.topics.push(new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.DataWriter:
+            this.writers.push(new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.DataReader:
+           this.readers.push(new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.Transport:
+            break;
+        }
+      }
     }
 
+    for (let topic of this.topics) {
+      topic.draw(this.context);
+    }
+    for (let reader of this.readers) {
+      reader.draw(this.context);
+    }
+    for (let writer of this.writers) {
+      writer.draw(this.context);
+    }
     console.log("canavas drawn!");
   }
 
@@ -181,4 +237,10 @@ class Topic extends Node {
 
 class Domain {
   
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
