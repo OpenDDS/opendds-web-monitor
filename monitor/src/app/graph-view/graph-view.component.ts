@@ -1,22 +1,149 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
-//import './graph-view.js';
-
-//declare function init();
+import { OpenDdsBridgeService } from '../opendds-bridge.service'
+import { GraphService } from './graph.service';
+import eventTypes from '../../../../eventConfig.js';
 
 @Component({
   selector: 'app-graph-view',
   templateUrl: './graph-view.component.html',
-  styleUrls: ['./graph-view.component.css']
+  styleUrls: ['./graph-view.component.css'],
+  providers: [GraphService, OpenDdsBridgeService]
 })
 export class GraphViewComponent implements OnInit {
 
-  constructor() { }
+  openddsBridge: OpenDdsBridgeService;
+  dataKeys: string[];sq
+  graphService: GraphService;
+  
+  topics: Topic[] = [];
+  readers: Reader[] = [];
+  writers: Writer[] = [];
+
+  constructor(graphService: GraphService, openddsBridge: OpenDdsBridgeService) { 
+    this.openddsBridge = openddsBridge;
+    this.graphService = graphService;
+  }
+  
+  canvas: HTMLCanvasElement;// = <HTMLCanvasElement> $('canvas').get(0);;
+  context: CanvasRenderingContext2D;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
+
+  topic: Topic = new Topic('T', 300, 300);
+  reader: Reader = new Reader('R', 50, 50);
+  writer: Writer = new Writer('W', 400, 500);
+
+  activeTopic: Topic = this.topic;
+
+  nodeType: String = "reader";
 
   ngOnInit() {
-    init();
+    this.dataKeys = Object.keys(this.openddsBridge.data)
+
+    this.init();
+  } 
+
+  init() {
+    this.canvas = <HTMLCanvasElement> $('canvas')[0];
+    this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
+    this.context.canvas.width  = window.innerWidth;
+    this.context.canvas.height = window.innerHeight;
+
+    // this.topic.connections.push(this.reader);
+    // this.topic.connections.push(this.writer);
+    
+    /*
+    this.topic.draw(this.context);
+    this.reader.draw(this.context);
+    this.writer.draw(this.context);
+    */
+
+    /*
+    this.openddsBridge.data is structured like this...
+    data {
+      publisher {
+          publisher1
+          publisher2
+      }
+      topic: {
+
+      }
+      key3: {
+
+      }
+      ...
+    }
+    this.dataKeys looks like ['key1', 'key2', 'key3', ...]
+    */
+
+    // load from openddsBridge
+    for (let key of this.dataKeys) {
+      for (let data of this.openddsBridge.data[key]) {
+        switch (key) {
+          case eventTypes.Subscriber:
+            break;
+          case eventTypes.Publisher:
+            break;
+          case eventTypes.ServiceParticipant:
+            break;
+          case eventTypes.DomainParticipant:
+            break;
+          case eventTypes.Topic:
+            this.topics.push(new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.DataWriter:
+            this.writers.push(new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.DataReader:
+           this.readers.push(new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight)));
+            break;
+          case eventTypes.Transport:
+            break;
+        }
+      }
+    }
+
+    // draw nodes on canvas
+    for (let topic of this.topics) {
+      topic.draw(this.context);
+    }
+    for (let reader of this.readers) {
+      reader.draw(this.context);
+    }
+    for (let writer of this.writers) {
+      writer.draw(this.context);
+    }
+
+    console.log("canavas drawn!");
   }
+
+  addNode(event) {
+    console.log("clicked canvas!");
+    let newNode: Node;
+    //canvas = $('canvas').get(0);
+    //context = canvas.getContext('2d');
+    switch (this.nodeType) {
+      case 'reader':
+        newNode = new Reader('R', event.pageX, event.pageY);
+        break;
+      case 'writer':
+        newNode = new Writer('W', event.pageX, event.pageY);
+        break;
+      case 'topic':
+        newNode = new Topic('T', event.pageX, event.pageY);
+        this.activeTopic = <Topic>newNode;
+        break;
+    }
+    this.activeTopic.connections.push(newNode);
+    newNode.draw(this.context);
+    this.activeTopic.draw(this.context);      
+  };  
+
 }
+
+
+////////////////////////////////////////
+// Additional classes for drawing     //
+////////////////////////////////////////
 
 class Node {
   text: string;
@@ -113,54 +240,8 @@ class Domain {
   
 }
 
-var canvas;// = <HTMLCanvasElement> $('canvas').get(0);;
-var context;// = <CanvasRenderingContext2D> canvas.getContext('2d');;
-
-var topic = new Topic('T', 300, 300);
-var reader = new Reader('R', 50, 50);
-var writer = new Writer('W', 400, 500);
-
-function init() {
-  canvas = <HTMLCanvasElement> $('canvas')[0];
-  context = <CanvasRenderingContext2D> canvas.getContext("2d");
-  context.canvas.width  = window.innerWidth;
-  context.canvas.height = window.innerHeight;
-
-  topic.connections.push(reader);
-  topic.connections.push(writer);
-    
-  topic.draw(context);
-  reader.draw(context);
-  writer.draw(context);
-  console.log("canavas drawn!");
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-
-/*
-$(document).ready(function() {  
-  canvas = $('canvas')[0];
-  context = canvas.getContext("2d");
-  context.canvas.width  = window.innerWidth;
-  context.canvas.height = window.innerHeight;
-
-  topic.connections.push(reader);
-  topic.connections.push(writer);
-    
-  topic.draw(context);
-  reader.draw(context);
-  writer.draw(context);
-  console.log("canavas drawn!");
-});
-*/
-
-$(canvas).click(function(event) {
-
-  console.log("clicked canvas!");
-  //canvas = $('canvas').get(0);
-  //context = canvas.getContext('2d');
-            
-  var newNode = new Reader('R', event.pageX, event.pageY);
-  topic.connections.push(newNode);
-  newNode.draw(context);
-  topic.draw(context);
-            
-});  
