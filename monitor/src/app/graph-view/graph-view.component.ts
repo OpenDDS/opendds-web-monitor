@@ -39,7 +39,6 @@ export class GraphViewComponent implements OnInit {
   ngOnInit() {
     this.dataKeys = Object.keys(this.openddsBridge.data)
     this.init();
-    setInterval(this.init(), 1000)
   } 
 
   init() {
@@ -47,6 +46,8 @@ export class GraphViewComponent implements OnInit {
     this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
     this.context.canvas.width  = window.innerWidth;
     this.context.canvas.height = window.innerHeight;
+
+    //this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 
     // this.topic.connections.push(this.reader);
     // this.topic.connections.push(this.writer);

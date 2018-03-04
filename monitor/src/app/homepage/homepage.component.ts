@@ -31,6 +31,9 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+    setInterval(() => {
+      this.initDashboard()
+    }, 5000);
     this.dataKeys = Object.keys(this.openddsBridge.data);
     console.log('here3', this.dataKeys)
 
@@ -73,6 +76,7 @@ export class HomepageComponent implements OnInit {
     this.dataKeys.forEach((key) => {
       this.dashboard.push({title: key, num: this.openddsBridge.data[key].length})
     })
+    console.log('updated dashboard!')
   }
 // unfortunately this is not a thing afaik due to the fact that once a gridster item is created it
 // cannot be changed so either we need to go back to a standard angular grid or delete and rebuild the grid
