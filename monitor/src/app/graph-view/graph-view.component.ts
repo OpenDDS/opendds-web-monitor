@@ -16,6 +16,7 @@ export class GraphViewComponent implements OnInit {
   dataKeys: string[];sq
   graphService: GraphService;
   
+  nodesToAddToTopic: Node[] = [];
   topics: Topic[] = [];
   readers: Reader[] = [];
   writers: Writer[] = [];
@@ -38,7 +39,12 @@ export class GraphViewComponent implements OnInit {
 
   ngOnInit() {
     this.dataKeys = Object.keys(this.openddsBridge.data)
-    this.init();
+    /*
+    setTimeout(() => {
+      this.init()
+    }, 2000);
+    */
+   this.init();
   } 
 
   init() {
@@ -97,12 +103,11 @@ export class GraphViewComponent implements OnInit {
         case eventTypes.DataWriter:
           const newWriter = new Writer('W', getRandomInt(200, window.innerWidth-200), getRandomInt(100, window.innerHeight-100));
           this.writers.push(newWriter);
-          this.activeTopic.connections.push(newWriter);
-          break;
+          this.nodesToAddToTopic.push(newWriter);
         case eventTypes.DataReader:
           const newReader = new Reader('R', getRandomInt(200, window.innerWidth-200), getRandomInt(100, window.innerHeight-100));
           this.readers.push(newReader);
-          this.activeTopic.connections.push(newReader);
+          this.nodesToAddToTopic.push(newReader);
           break;
         case eventTypes.Transport:
           break;
@@ -110,6 +115,9 @@ export class GraphViewComponent implements OnInit {
     })
 
     // draw nodes on canvas
+    for (let node of this.nodesToAddToTopic) {
+      this.activeTopic.connections.push(node);
+    }
     for (let topic of this.topics) {
       topic.draw(this.context);
     }
