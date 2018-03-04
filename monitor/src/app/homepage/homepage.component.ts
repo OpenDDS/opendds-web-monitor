@@ -31,7 +31,6 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(this.initDashboard(), 15000);
     this.dataKeys = Object.keys(this.openddsBridge.data);
     console.log('here3', this.dataKeys)
 
@@ -67,12 +66,12 @@ export class HomepageComponent implements OnInit {
   
   initDashboard() {
     // creates the specific tile for the data types and gives it the current values
+    this.dashboard = [];
     let index = 0
     let gridsterItem: GridsterItem
+    this.dataKeys = Object.keys(this.openddsBridge.data);
     this.dataKeys.forEach((key) => {
       this.dashboard.push({title: key, num: this.openddsBridge.data[key].length})
-
-
     })
   }
 // unfortunately this is not a thing afaik due to the fact that once a gridster item is created it
