@@ -10,25 +10,45 @@ import processes from './processes'
 })
 
 export class ProcessListComponent implements OnInit {
-  openddsBridge
+  openddsBridge;
 
   constructor(openddsBridge : OpenDdsBridgeService) {
     this.openddsBridge = openddsBridge
-    console.log('here', openddsBridge)
   }
 
   ngOnInit() {
   }
 
-  mapTopics (guid) {
-    return _.map(this.openddsBridge.topics, (topic) => _.isEqual(guid, topic.dp_id))
+  mapTopics (dp_id) {
+    return _.filter(this.openddsBridge.data.Topic, (topic) => _.isEqual(dp_id, topic.dp_id))
   }
 
-  mapPublishers (guid) {
-    return _.map(this.openddsBridge.publishers, (publisher) => _.isEqual(guid, publisher.dp_id))
+  mapPublishers (dp_id) {
+    return _.filter(this.openddsBridge.data.Publisher, (publisher) => _.isEqual(dp_id, publisher.dp_id))
+  }
+  mapPublishersByTopic (dp_id, topic_id) {
+    return _(this.openddsBridge.data.Publisher)
+      .filter((publisher) => _.isEqual(dp_id, publisher.dp_id))
+      .filter((publisher) => this.hasDataWritersForTopic(publisher, topic_id))
+      .value()
   }
 
-  mapSubscriber (guid) {
-    return _.map(this.openddsBridge.subscribers, (subscriber) => _.isEqual(guid, subscriber.dp_id))
+  hasDataWritersForTopic (publisher, topic_id) {
+    return publisher.writers.some((writer) => _.isEqual(writer.topic_id, topic_id))
+  }
+
+  mapSubscriber (dp_id) {
+    return _.filter(this.openddsBridge.data.Subscriber, (subscriber) => _.isEqual(dp_id, subscriber.dp_id))
+  }
+
+  mapSubscriberByTopic (dp_id, topic_id) { 
+    return _(this.openddsBridge.data.Subscriber)
+      .filter((subscriber) => _.isEqual(dp_id, subscriber.dp_id))
+      .filter((subscriber) => this.hasDataReadersForTopic(subscriber, topic_id))
+      .value()
+  }
+
+  hasDataReadersForTopic (subscriber, topic_id) {
+    return subscriber.readers.some((reader) => _.isEqual(reader.topic_id, topic_id))
   }
 }

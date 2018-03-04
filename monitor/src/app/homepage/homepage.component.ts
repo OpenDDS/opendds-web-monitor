@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
 
   openddsBridge
   dataKeys
-  
+  // defines the bridge for data between the service and the homepage
   constructor(openddsBridge: OpenDdsBridgeService) { 
     this.openddsBridge = openddsBridge;
     console.log('here2', this.openddsBridge)
@@ -21,7 +21,7 @@ export class HomepageComponent implements OnInit {
 
   options: GridsterConfig
   dashboard: Array<GridsterItem>
-
+  // the array of gridster items that make up the grid is stored as an array
   static itemChange(item, itemComponent) {
     console.info('itemChanged', item, itemComponent)
   }
@@ -40,21 +40,18 @@ export class HomepageComponent implements OnInit {
     }
 
     this.dashboard = []
-
+    // adds the ability to drag the tiles and expand them, however since for now we are going with 
+    // resizeable down below this is not that useful, but if we change that its here
     this.options.draggable = {
       enabled: true
-      // start: this.removeItem,
-      // stop: this.addItem
     }
 
     this.options.resizable = {
     enabled: true,
-    // start: this.removeItem,
-    // stop: this.addItem
     }
 
     this.options.swap = true
-    
+    // calls the dashboard creation
     this.initDashboard()
   }
 
@@ -68,13 +65,18 @@ export class HomepageComponent implements OnInit {
   addItem(item: GridsterItem) { this.dashboard.push(item) }
   
   initDashboard() {
-    // get data
-    //let myGirdsterItem: GridsterItem // turn into gridster item
-    //this.addItem( myGirdsterItem )
+    // creates the specific tile for the data types and gives it the current values
     let index = 0
     let gridsterItem: GridsterItem
     this.dataKeys.forEach((key) => {
       this.dashboard.push({title: key, num: this.openddsBridge.data[key].length})
     })
   }
+// unfortunately this is not a thing afaik due to the fact that once a gridster item is created it
+// cannot be changed so either we need to go back to a standard angular grid or delete and rebuild the grid
+// with hopefully the new current values but that seems really bad
+
+//  updateDashboard() {  <----- not a thing
+   // this.dashboard
+  // }
 }

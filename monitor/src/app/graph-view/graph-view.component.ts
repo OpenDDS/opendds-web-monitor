@@ -38,8 +38,8 @@ export class GraphViewComponent implements OnInit {
 
   ngOnInit() {
     this.dataKeys = Object.keys(this.openddsBridge.data)
-
     this.init();
+    setInterval(this.init(), 1000)
   } 
 
   init() {
@@ -89,17 +89,17 @@ export class GraphViewComponent implements OnInit {
         case eventTypes.DomainParticipant:
           break;
         case eventTypes.Topic:
-          const newTopic = new Topic('T', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          const newTopic = new Topic('T', getRandomInt(200, window.innerWidth-200), getRandomInt(100, window.innerHeight-100));
           this.topics.push(newTopic);
           this.activeTopic = newTopic;
           break;
         case eventTypes.DataWriter:
-          const newWriter = new Writer('W', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          const newWriter = new Writer('W', getRandomInt(200, window.innerWidth-200), getRandomInt(100, window.innerHeight-100));
           this.writers.push(newWriter);
           this.activeTopic.connections.push(newWriter);
           break;
         case eventTypes.DataReader:
-          const newReader = new Reader('R', getRandomInt(0, window.innerWidth), getRandomInt(0, window.innerHeight));
+          const newReader = new Reader('R', getRandomInt(200, window.innerWidth-200), getRandomInt(100, window.innerHeight-100));
           this.readers.push(newReader);
           this.activeTopic.connections.push(newReader);
           break;
@@ -118,6 +118,8 @@ export class GraphViewComponent implements OnInit {
     for (let writer of this.writers) {
       writer.draw(this.context);
     }
+
+    console.log(this.activeTopic.connections)
 
     console.log("canavas drawn!");
   }

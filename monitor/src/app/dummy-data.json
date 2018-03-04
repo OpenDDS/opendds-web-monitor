@@ -1,0 +1,177 @@
+{
+  "DomainParticipant": {
+    "domain_id": 23,
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "host": "coolio-hostname",
+    "pid": 12519
+  },
+  "DataReader": {
+    "associations": [],
+    "instances": [],
+    "sub_handle": 1,
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "topic_id": {
+      "guidPrefix_0": 5,
+      "guidPrefix_1": 88,
+      "guidPrefix_2": 43,
+      "guidPrefix_3": 109,
+      "guidPrefix_4": 75,
+      "guidPrefix_5": 101
+    },
+    "dr_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    }
+  },
+  "DataWriter": {
+    "associations": [],
+    "instances": [],
+    "pub_handle": 32,
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "topic_id": {
+      "guidPrefix_0": 5,
+      "guidPrefix_1": 88,
+      "guidPrefix_2": 43,
+      "guidPrefix_3": 109,
+      "guidPrefix_4": 75,
+      "guidPrefix_5": 101
+    },
+    "dw_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    }
+  },
+  "Topic": {
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "topic_id": {
+      "guidPrefix_0": 5,
+      "guidPrefix_1": 88,
+      "guidPrefix_2": 43,
+      "guidPrefix_3": 109,
+      "guidPrefix_4": 75,
+      "guidPrefix_5": 101
+    },
+    "topic_name": "Subscriber Monitor",
+    "type_name": "OpenDDS::DCPS::SubscriberReport"
+  },
+  "Subscriber": {
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "handle": 1,
+    "transport_id": 0,
+    "readers": [{
+      "associations": [],
+      "instances": [],
+      "sub_handle": 1,
+      "dp_id": {
+        "guidPrefix_0": 1,
+        "guidPrefix_1": 3,
+        "guidPrefix_2": 40,
+        "guidPrefix_3": 210,
+        "guidPrefix_4": 68,
+        "guidPrefix_5": 107
+      },
+      "topic_id": {
+        "guidPrefix_0": 5,
+        "guidPrefix_1": 88,
+        "guidPrefix_2": 43,
+        "guidPrefix_3": 109,
+        "guidPrefix_4": 75,
+        "guidPrefix_5": 101
+      },
+      "dr_id": {
+        "guidPrefix_0": 1,
+        "guidPrefix_1": 3,
+        "guidPrefix_2": 40,
+        "guidPrefix_3": 210,
+        "guidPrefix_4": 68,
+        "guidPrefix_5": 107
+      }
+    }]
+  },
+  "Publisher": {
+    "dp_id": {
+      "guidPrefix_0": 1,
+      "guidPrefix_1": 3,
+      "guidPrefix_2": 40,
+      "guidPrefix_3": 210,
+      "guidPrefix_4": 68,
+      "guidPrefix_5": 107
+    },
+    "handle": 2,
+    "transport_id": 0,
+    "writers": [
+      {
+        "associations": [],
+        "instances": [],
+        "pub_handle": 32,
+        "dp_id": {
+          "guidPrefix_0": 1,
+          "guidPrefix_1": 3,
+          "guidPrefix_2": 40,
+          "guidPrefix_3": 210,
+          "guidPrefix_4": 68,
+          "guidPrefix_5": 107
+        },
+        "topic_id": {
+          "guidPrefix_0": 5,
+          "guidPrefix_1": 88,
+          "guidPrefix_2": 43,
+          "guidPrefix_3": 109,
+          "guidPrefix_4": 75,
+          "guidPrefix_5": 101
+        },
+        "dw_id": {
+          "guidPrefix_0": 1,
+          "guidPrefix_1": 3,
+          "guidPrefix_2": 40,
+          "guidPrefix_3": 210,
+          "guidPrefix_4": 68,
+          "guidPrefix_5": 107
+        }
+      }
+    ]
+  }
+}
