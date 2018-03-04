@@ -13,7 +13,7 @@ import eventTypes from '../../../../eventConfig.js';
 export class GraphViewComponent implements OnInit {
 
   openddsBridge: OpenDdsBridgeService;
-  dataKeys: string[];sq
+  dataKeys: string[];
   graphService: GraphService;
   
   nodesToAddToTopic: Node[] = [];
