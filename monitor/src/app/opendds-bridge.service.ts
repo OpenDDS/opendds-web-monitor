@@ -6,6 +6,8 @@ import { Socket } from './interfaces'
 import config from '../../../eventConfig'
 import _ from 'lodash'
 import { ModuleWithProviders } from '@angular/compiler/src/core'
+import dummyData from './dummy-data.json'
+import { environment } from '../environments/environment'
 
 const URL = 'http://localhost:8081'
 
@@ -22,10 +24,16 @@ export class OpenDdsBridgeService {
   constructor() {
     this.data = {}
     this.connections = {}
-    connectionsToCreate.forEach((item) => {
-      this.data[item] = []
-      this.connections[item] = this.getConnection(item)
-    })
+    if (environment.fakeData) {
+      _.forEach(dummyData, (item, key) => {
+        this.data[key] = [item, item]
+      })
+    } else {
+      connectionsToCreate.forEach((item) => {
+        this.data[item] = []
+        this.connections[item] = this.getConnection(item)
+      })
+    }
   }
 
   // The socket is wrapped in an observable because it takes care of auto updating when new data comes in on the socket
