@@ -8,6 +8,11 @@ Pre-requirements:
 
 4) type 'npm install' into command line, then 'ng serve'
 
+# monitor compile (server connection required)
+ng serve
+# monitor test file (no server connection required)
+npm run start:fake
+
 # Compile support libraries
 $ cd server
 # set environmnet variables (for linux)
