@@ -8,7 +8,7 @@ import eventTypes from '../../../../eventConfig.js';
   selector: 'app-graph-view',
   templateUrl: './graph-view.component.html',
   styleUrls: ['./graph-view.component.css'],
-  providers: [GraphService, OpenDdsBridgeService]
+  providers: [GraphService]
 })
 export class GraphViewComponent implements OnInit {
 
