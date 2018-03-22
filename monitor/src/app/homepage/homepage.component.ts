@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
-// import { OpenDdsBridgeService } from '../opendds-bridge.service'
+import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GridsterConfig, GridsterItem } from 'angular-gridster2'
-import * as d3 from 'd3'
+//import * as d3 from 'd3'
 
 @Component({
   selector: 'app-homepage',
@@ -10,8 +10,8 @@ import * as d3 from 'd3'
   // providers: [OpenDdsBridgeService]
 })
 
-export class HomepageComponent implements OnInit {
-  title2 = [ 'Number of Publishers', 'Number of Subscribers', 'Number of Data Readers', 'Number of Data Writers', 'Number of Samples',
+ export class HomepageComponent{
+  /*title2 = [ 'Number of Publishers', 'Number of Subscribers', 'Number of Data Readers', 'Number of Data Writers', 'Number of Samples',
   'Number of Topics', 'Largest Topic' , 'Most Active Writer', 'Number of total Writes']
   // value2 = [ '23', '234' , '234', '234', '234', '234', '234', '234', '234']
   numPub = 23
@@ -77,12 +77,12 @@ export class HomepageComponent implements OnInit {
    }
 
    */
-   initDashboard() {
+   //initDashboard() {
      // get data
-     let myGirdsterItem: GridsterItem // turn into gridster item
-     this.addItem( myGirdsterItem )
-     this.dashboard.push()
-   }
+     //let myGirdsterItem: GridsterItem // turn into gridster item
+     //this.addItem( myGirdsterItem )
+     //this.dashboard.push()
+   //} */
   // d3 test implementation
   // tempData: number[] = [30, 86, 168, 281, 303, 365];
 
