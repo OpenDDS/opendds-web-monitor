@@ -9,10 +9,26 @@
     -->
 
     <!--<canvas (click)="this.addNode($event)"></canvas>-->
-    <canvas></canvas>
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <div class="graph-container">
+      <div className="graph">
+        <div *ngFor="let node of nodes"
+            class="{{node.type}}" 
+            id="{{node.id}}" 
+            [style.top]="node.yPos - 15"
+            [style.left]="node.xPos - 15"
+            (click)="setActiveNode(node)">
+          {{node.id}}
+        </div>
+        <svg *ngFor="let path of paths" 
+            class="path" 
+            [style.top]="path.yPos"
+            [style.left]="path.xPos" 
+            [style.width]="path.widt"
+            [style.height]="path.height">
+          <line x1="0" y1="0" [attr.x2]="path.width" [attr.y2]="path.height"/>
+        </svg>
+      </div>
+    </div>
 
   </body>
 </html>
