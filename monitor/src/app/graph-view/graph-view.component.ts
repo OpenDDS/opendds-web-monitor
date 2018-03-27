@@ -16,9 +16,6 @@ export class GraphViewComponent implements OnInit {
 
   nodes: GraphElement[];
   paths: Path[];
-  
-  nodesSub: Subscription;
-  pathsSub: Subscription;
 
   constructor(private graphService: GraphService) {}
 
