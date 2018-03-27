@@ -14,6 +14,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { GraphViewComponent } from './graph-view/graph-view.component';
 import { OpenDdsBridgeService } from './opendds-bridge.service';
 import { GridsterModule } from 'angular-gridster2';
+import { GraphDetialsBoxComponent } from './graph-detials-box/graph-detials-box.component';
+import { GraphService } from './graph-view/graph.service';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { GridsterModule } from 'angular-gridster2';
     HomepageComponent,
     GraphViewComponent,
     ProcessListComponent,
+    GraphDetialsBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { GridsterModule } from 'angular-gridster2';
     AppRoutingModule,
     GridsterModule
   ],
-  providers: [OpenDdsBridgeService],
+  providers: [OpenDdsBridgeService, GraphService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -11,11 +11,15 @@ export class GraphElement {
     update(message) {
         setInterval(() => {
             const d = new Date();
-            this.messages.push(`${d.getHours()}:${this.formatedMinutes(d.getMinutes())}.${d.getSeconds()}: ${message} (${this.type})`);
+            this.messages.push(`
+                ${this.formatedTime(d.getHours())}:${this.formatedTime(d.getMinutes())}.${this.formatedTime(d.getSeconds())}: 
+                ${message} 
+                (${this.type})
+            `);
         }, 2000)
     }
 
-    formatedMinutes(minutes){
-        if (minutes < 10) { return '0' + minutes } else { return minutes } 
+    formatedTime(time){
+        if (time < 10) { return '0' + time } else { return time } 
     }
 }
