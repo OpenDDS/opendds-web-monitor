@@ -1,5 +1,6 @@
 var opendds = require('opendds');
 var events = require('../eventConfig');
+var util = require('util');
 
 function DDSObserver() {
   this.factory = null
@@ -22,7 +23,7 @@ DDSObserver.prototype.ServiceParticipant = function(io) {
       'OpenDDS::DCPS::ServiceParticipantReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved ServiceParticipant sample");
         io.emit(events.ServiceParticipant, sample);
       }
   )
@@ -38,7 +39,7 @@ DDSObserver.prototype.DomainParticipant = function(io) {
       'OpenDDS::DCPS::DomainParticipantReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved DomainParticipant sample");        
         io.emit(events.DomainParticipant, sample);
       }
   )
@@ -54,7 +55,7 @@ DDSObserver.prototype.Topic = function(io) {
       'OpenDDS::DCPS::TopicReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved Topic sample");
         io.emit(events.Topic, sample);
       }
   )
@@ -70,7 +71,7 @@ DDSObserver.prototype.Publisher = function(io) {
       'OpenDDS::DCPS::PublisherReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved Publisher sample");
         io.emit(events.Publisher, sample);
       }
   )
@@ -86,7 +87,7 @@ DDSObserver.prototype.Subscriber = function(io) {
       'OpenDDS::DCPS::SubscriberReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved Subscriber sample");        
         io.emit(events.Subscriber, sample);
       }
   )
@@ -102,7 +103,7 @@ DDSObserver.prototype.DataWriter = function(io) {
       'OpenDDS::DCPS::DataWriterReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved DataWriter sample");
         io.emit(events.DataWriter, sample);
       }
   )
@@ -118,7 +119,7 @@ DDSObserver.prototype.DataReader = function(io) {
       'OpenDDS::DCPS::DataReaderReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved DataReader sample");        
         io.emit(events.DataReader, sample);
       }
   )
@@ -134,10 +135,25 @@ DDSObserver.prototype.Transport = function(io) {
       'OpenDDS::DCPS::TransportReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log(sample);
+        console.log("Reclieved Transport sample");        
         io.emit(events.Transport, sample);
       }
   )
+}
+
+// FinalizeDO method
+// Initialized OpenDDS node module and loads monitor IDL
+// Creates participant of factory. 
+DDSObserver.prototype.finalizeDO = function() {
+  if(this.factory) {
+    console.log("finalizing DDS connection");
+    if(this.participant) {
+      this.factory.delete_participant(this.participant);
+      delete this.participant;
+    }
+    opendds.finalize(this.factory);
+    delete this.factory;
+  }
 }
 
 // InitializeDO method
@@ -153,6 +169,23 @@ DDSObserver.prototype.initializeDO = function() {
   // initialize participant with opendds module
   // DomainID is specific to OpenDDS Monitor IDL
   this.participant = this.factory.create_participant(this.domainID);
+  // Delete processes before exit
+  // SIGINT - terminal (supported by windows) exit e.g. CTRL-C
+  var self = this;
+  process.on('SIGINT', function() {
+    self.finalizeDO();
+    process.exit(0);
+  });
+  // SIGTERM - terminal (not supported by windows) exit e.g. CTRL-C
+  process.on('SIGTERM', function() {
+    self.finalizeDO();
+    process.exit(0);
+  });
+  // Event triggers from: process.exit(0) 
+  process.on('exit', function() {
+    console.log("graceful exit");
+    self.finalizeDO();
+  });
 }
 
 module.exports = DDSObserver;
