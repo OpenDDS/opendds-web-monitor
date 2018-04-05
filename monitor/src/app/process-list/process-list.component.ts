@@ -11,9 +11,11 @@ import processes from './processes'
 
 export class ProcessListComponent implements OnInit {
   openddsBridge;
+  JSON
 
   constructor(openddsBridge : OpenDdsBridgeService) {
     this.openddsBridge = openddsBridge
+    this.JSON = JSON
   }
 
   ngOnInit() {

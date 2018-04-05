@@ -70,7 +70,7 @@ export class HomepageComponent implements OnInit {
     // creates the specific tile for the data types and gives it the current values
     this.dashboard = [];
     let index = 0
-    let gridsterItem: GridsterItem
+    //let gridsterItem: GridsterItem
     this.dataKeys = Object.keys(this.openddsBridge.data);
     this.dataKeys.forEach((key) => {
       this.dashboard.push({title: key, num: this.openddsBridge.data[key].length})
