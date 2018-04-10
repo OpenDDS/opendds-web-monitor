@@ -64,11 +64,11 @@ export class GraphService {
         const newNodes: GraphElement[] = [];
         const newPaths: Path[] = [];
 
-        let xOffset = 1, yOffset = 1; // properly spaces elements on graph
+        let xOffset = 0, yOffset = 0; // properly spaces elements on graph
         for (let topic of topics) {
 
-            let topicX = xOffset * 250;
-            let topicY = 100;
+            let topicX = 50 + xOffset * 250;
+            let topicY = 50 + yOffset * 30;
 
             newNodes.push(new GraphElement(topic.name, topicX, topicY, 'topic'))
 
@@ -81,7 +81,7 @@ export class GraphService {
                 if (node.readers) {
                     for (let reader of node.readers) {
                         nodeX = topicX + 30;
-                        nodeY = 200;
+                        nodeY = topicY + 100;
                         newNodes.push(new GraphElement('Reader', nodeX, nodeY, 'reader'));
                         newPaths.push(new Path(topicX, topicY, nodeX, nodeY));
                     }
@@ -91,7 +91,7 @@ export class GraphService {
                 else if (node.writers) {
                     for (let reader of node.writers) {
                         nodeX = topicX + 150;
-                        nodeY = 250;
+                        nodeY = topicY + 150;
                         newNodes.push(new GraphElement('Writer', nodeX, nodeY, 'writer'));
                         newPaths.push(new Path(topicX + 20, topicY, nodeX, nodeY));
                     }
