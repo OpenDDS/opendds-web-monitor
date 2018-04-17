@@ -46,12 +46,10 @@
     </gridster>
 </div> -->
 
-<div style="width: 100%; height: 100vh"></div>
     <table>
-        <tbody>
-            <tr [item] = "item" *ng-repeat="let item in dashboard">
-            <div>Number of {{ item.title }}: {{ item.num }}</div>
+      <tbody>
+        <tr *ngFor="let dashboard of dashboard">
+            <td><h1>Number of {{ dashboard.title }}: {{ dashboard.num }}</h1></td> 
         </tr>
-    </tbody>
+        </tbody>
     </table>
-</div>
