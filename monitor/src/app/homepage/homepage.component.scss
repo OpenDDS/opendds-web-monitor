@@ -1,14 +1,6 @@
-table, tr , td {
+.col{	
     border: 1px solid grey;
     border-collapse: collapse;
     padding: 5px;
+    font-size: 20px
     }
-tr{
-    table tr:nth-child(odd) {
-        background-color: #6b6969;
-      }
-      table tr:nth-child(even) {
-        background-color: #ffffff;
-      }
-      border: 1px
-}
