@@ -2,17 +2,34 @@
 <html>
   <body>
 
-    <!--
-    <button (click)="this.nodeType = 'reader'">Reader</button>
-    <button (click)="this.nodeType = 'writer'">Writer</button>
-    <button (click)="this.nodeType = 'topic'">Topic</button>
-    -->
+    <div class="graph-container">
+      <div class="graph">
 
-    <!--<canvas (click)="this.addNode($event)"></canvas>-->
-    <canvas></canvas>
+        <!-- NODES -->
+        <div *ngFor="let node of nodes"
+            class="{{node.type}}" 
+            id="{{node.id}}" 
+            [style.top.px]="node.yPos - 15"
+            [style.left.px]="node.xPos - 15"
+            (click)="setActiveNode(node)">
+          {{node.id}}
+        </div>
 
+        <!-- PATHS -->
+        <svg *ngFor="let path of paths" 
+            class="path" 
+            [style.top.px]="path.yPos"
+            [style.left.px]="path.xPos" 
+            [style.width.px]="path.width"
+            [style.height.px]="path.height">
+          <line x1="0" y1="0" [attr.x2]="path.width" [attr.y2]="path.height"/>
+        </svg>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- DETIALS -->
+        <app-graph-detials-box></app-graph-detials-box>     
+
+      </div>
+    </div>
 
   </body>
 </html>
