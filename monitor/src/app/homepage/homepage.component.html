@@ -42,14 +42,14 @@
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
             <div>{{item[0] + " " + value2[0]}}</div>
-        </gridster-item>   
+        </gridster-item>
     </gridster>
 </div> -->
 
     <table>
       <tbody>
         <tr *ngFor="let dashboard of dashboard">
-            <td><h1>Number of {{ dashboard.title }}: {{ dashboard.num }}</h1></td> 
+            <td><h1>Number of {{ dashboard.title }}: {{ dashboard.num }}</h1></td>
         </tr>
         </tbody>
     </table>

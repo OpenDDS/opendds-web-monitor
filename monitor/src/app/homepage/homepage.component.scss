@@ -1,22 +1,14 @@
-// gridster {
-//     background-color: white;
-// }
-
-// gridster-item {
-//     background-color: rgb(246, 246, 246);
-//     border-radius: 10px;
-// }
 table, tr , td {
     border: 1px solid grey;
     border-collapse: collapse;
     padding: 5px;
     }
-// tr{
-//     table tr:nth-child(odd) {
-//         background-color: #6b6969;
-//       }
-//       table tr:nth-child(even) {
-//         background-color: #ffffff;
-//       }
-//       border: 1px
-// }
+tr{
+    table tr:nth-child(odd) {
+        background-color: #6b6969;
+      }
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+      border: 1px
+}
