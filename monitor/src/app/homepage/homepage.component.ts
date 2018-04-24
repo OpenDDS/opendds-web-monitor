@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
-//import { GridsterConfig, GridsterItem } from 'angular-gridster2'
+import { GridsterConfig, GridsterItem } from 'angular-gridster2'
 
 @Component({
   selector: 'app-homepage',
@@ -13,26 +13,28 @@ export class HomepageComponent implements OnInit {
   openddsBridge: OpenDdsBridgeService
   dataKeys: string[]
   // defines the bridge for data between the service and the homepage
-  constructor(openddsBridge: OpenDdsBridgeService) { 
+  constructor(openddsBridge: OpenDdsBridgeService) {
     this.openddsBridge = openddsBridge;
   }
   dashboard
   // // the array of gridster items that make up the grid is stored as an array
 
   ngOnInit() {
+  this.dashboard = []
   this.initDashboard()
   this.dataKeys = Object.keys(this.openddsBridge.data);
-  this.dashboard = []
+  console.log(this.dataKeys)
+  console.log(this.dashboard)
   }
 
-  addItem(item) { this.dashboard.push(item) }
-  //   // adds the ability to drag the tiles and expand them, however since for now we are going with 
+  //addItem(item) { this.dashboard.push(item) }
+  //   // adds the ability to drag the tiles and expand them, however since for now we are going with
   //   // resizeable down below this is not that useful, but if we change that its here
 
-  initDashboard(){ 
+  initDashboard(){
     this.dataKeys = Object.keys(this.openddsBridge.data);
     this.dataKeys.forEach((key) => {
-    this.dashboard[key]({title: key, num: this.openddsBridge.data[key].length})
+    this.dashboard.push({title: key, num: this.openddsBridge.data[key].length})
     })
     console.log('updated dashboard!')
   }
