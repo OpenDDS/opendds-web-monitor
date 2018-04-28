@@ -14,7 +14,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { GraphViewComponent } from './graph-view/graph-view.component';
 import { OpenDdsBridgeService } from './opendds-bridge.service';
 import { GridsterModule } from 'angular-gridster2';
-import { GraphDetialsBoxComponent } from './graph-detials-box/graph-detials-box.component';
+import { GraphDetailsBoxComponent } from './graph-details-box/graph-details-box.component';
 import { GraphService } from './graph-view/graph.service';
 
 
@@ -25,7 +25,7 @@ import { GraphService } from './graph-view/graph.service';
     HomepageComponent,
     GraphViewComponent,
     ProcessListComponent,
-    GraphDetialsBoxComponent,
+    GraphDetailsBoxComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,8 +7,8 @@
 
         <!-- NODES -->
         <div *ngFor="let node of nodes"
-            class="{{node.type}}" 
-            id="{{node.id}}" 
+            class="{{node.type}}"
+            id="{{node.id}}"
             [style.top.px]="node.yPos - 15"
             [style.left.px]="node.xPos - 15"
             (click)="setActiveNode(node)">
@@ -16,17 +16,17 @@
         </div>
 
         <!-- PATHS -->
-        <svg *ngFor="let path of paths" 
-            class="path" 
+        <svg *ngFor="let path of paths"
+            class="path"
             [style.top.px]="path.yPos"
-            [style.left.px]="path.xPos" 
+            [style.left.px]="path.xPos"
             [style.width.px]="path.width"
             [style.height.px]="path.height">
           <line x1="0" y1="0" [attr.x2]="path.width" [attr.y2]="path.height"/>
         </svg>
 
         <!-- DETIALS -->
-        <app-graph-detials-box></app-graph-detials-box>     
+        <app-graph-details-box></app-graph-details-box>     
 
       </div>
     </div>

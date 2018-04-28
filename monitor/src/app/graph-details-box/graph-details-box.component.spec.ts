@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraphDetialsBoxComponent } from './graph-detials-box.component';
+import { GraphDetailsBoxComponent } from './graph-details-box.component';
 
-describe('GraphDetialsBoxComponent', () => {
-  let component: GraphDetialsBoxComponent;
-  let fixture: ComponentFixture<GraphDetialsBoxComponent>;
+describe('GraphDetailsBoxComponent', () => {
+  let component: GraphDetailsBoxComponent;
+  let fixture: ComponentFixture<GraphDetailsBoxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GraphDetialsBoxComponent ]
+      declarations: [ GraphDetailsBoxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GraphDetialsBoxComponent);
+    fixture = TestBed.createComponent(GraphDetailsBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

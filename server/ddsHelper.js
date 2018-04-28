@@ -1,3 +1,8 @@
+//
+// ddshelper.js
+// Contains the events for the monitoring server
+// Author: Mitchell Dzursisin
+//
 var opendds = require('opendds');
 var events = require('../eventConfig');
 var util = require('util');
@@ -7,7 +12,7 @@ function DDSObserver() {
   this.library = null
   this.participant = null
   this.topic = null
-  this.qos = {     
+  this.qos = {
     DDSObserverQos: { durability: "TRANSIENT_LOCAL_DURABILITY_QOS" }
   }
   this.domainID = -999 //domainid constant for monitor.idl
@@ -39,7 +44,7 @@ DDSObserver.prototype.DomainParticipant = function(io) {
       'OpenDDS::DCPS::DomainParticipantReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log("Reclieved DomainParticipant sample");        
+        console.log("Reclieved DomainParticipant sample");
         io.emit(events.DomainParticipant, sample);
       }
   )
@@ -87,7 +92,7 @@ DDSObserver.prototype.Subscriber = function(io) {
       'OpenDDS::DCPS::SubscriberReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log("Reclieved Subscriber sample");        
+        console.log("Reclieved Subscriber sample");
         io.emit(events.Subscriber, sample);
       }
   )
@@ -119,7 +124,7 @@ DDSObserver.prototype.DataReader = function(io) {
       'OpenDDS::DCPS::DataReaderReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log("Reclieved DataReader sample");        
+        console.log("Reclieved DataReader sample");
         io.emit(events.DataReader, sample);
       }
   )
@@ -135,7 +140,7 @@ DDSObserver.prototype.Transport = function(io) {
       'OpenDDS::DCPS::TransportReport',
       this.qos,
       function(dr, sinfo, sample) {
-        console.log("Reclieved Transport sample");        
+        console.log("Reclieved Transport sample");
         io.emit(events.Transport, sample);
       }
   )
@@ -143,7 +148,7 @@ DDSObserver.prototype.Transport = function(io) {
 
 // FinalizeDO method
 // Initialized OpenDDS node module and loads monitor IDL
-// Creates participant of factory. 
+// Creates participant of factory.
 DDSObserver.prototype.finalizeDO = function() {
   if(this.factory) {
     console.log("finalizing DDS connection");
@@ -158,7 +163,7 @@ DDSObserver.prototype.finalizeDO = function() {
 
 // InitializeDO method
 // Initialized OpenDDS node module and loads monitor IDL
-// Creates participant of factory. 
+// Creates participant of factory.
 DDSObserver.prototype.initializeDO = function() {
   this.factory = opendds.initialize('-DCPSInfoRepo localhost:12345');
   //load pre-compiled library
@@ -181,7 +186,7 @@ DDSObserver.prototype.initializeDO = function() {
     self.finalizeDO();
     process.exit(0);
   });
-  // Event triggers from: process.exit(0) 
+  // Event triggers from: process.exit(0)
   process.on('exit', function() {
     console.log("graceful exit");
     self.finalizeDO();

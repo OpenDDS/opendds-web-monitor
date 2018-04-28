@@ -4,11 +4,11 @@ import { GraphService } from '../graph-view/graph.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-    selector: 'app-graph-detials-box',
-    templateUrl: './graph-detials-box.component.html',
-    styleUrls: ['./graph-detials-box.component.css']
+    selector: 'app-graph-details-box',
+    templateUrl: './graph-details-box.component.html',
+    styleUrls: ['./graph-details-box.component.css']
 })
-export class GraphDetialsBoxComponent implements OnInit {
+export class GraphDetailsBoxComponent implements OnInit {
 
     activeNode: GraphElement;
 

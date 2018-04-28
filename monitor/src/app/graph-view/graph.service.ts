@@ -14,7 +14,7 @@ export class GraphService {
 
     dataKeys: string[];
 
-    constructor(private openddsBridge: OpenDdsBridgeService) { 
+    constructor(private openddsBridge: OpenDdsBridgeService) {
         this.dataKeys = Object.keys(this.openddsBridge.data);
     }
 
