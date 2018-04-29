@@ -1,3 +1,6 @@
+// OpenDDS Bridge Service: supplies the connections to the opendds node module over socket.io
+// Author: Alexander Hammonds
+
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { map, catchError } from 'rxjs/operators'

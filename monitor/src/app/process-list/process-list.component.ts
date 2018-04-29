@@ -1,3 +1,6 @@
+// Process List: Shows the data from the opendds bridge service organized by hosts and pub/subs
+// Author: Alexander Hammonds
+
 import { Component, OnInit } from '@angular/core'
 import _ from 'lodash'
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
