@@ -1,3 +1,5 @@
+// written by Matt Blough
+
 import { Component, OnInit, Input } from '@angular/core'
 import { OpenDdsBridgeService } from '../opendds-bridge.service'
 import { GridsterConfig, GridsterItem } from 'angular-gridster2'
@@ -26,10 +28,6 @@ export class HomepageComponent implements OnInit {
   console.log(this.dataKeys)
   console.log(this.dashboard)
   }
-
-  //addItem(item) { this.dashboard.push(item) }
-  //   // adds the ability to drag the tiles and expand them, however since for now we are going with
-  //   // resizeable down below this is not that useful, but if we change that its here
 
   initDashboard(){
     this.dataKeys = Object.keys(this.openddsBridge.data);
