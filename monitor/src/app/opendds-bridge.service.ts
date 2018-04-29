@@ -26,7 +26,7 @@ export class OpenDdsBridgeService {
     this.connections = {}
     if (environment.fakeData) {
       _.forEach(dummyData, (item, key) => {
-        this.data[key] = [item, item]
+        this.data[key] = [item]
       })
     } else {
       connectionsToCreate.forEach((item) => {

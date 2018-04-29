@@ -24,9 +24,14 @@
                                   <ngb-panel *ngFor="let publisher of mapPublishersByTopic(domainParticipant.dp_id, topic.topic_id)" title="Publisher (handle={{publisher.handle}}, transportId={{publisher.transport_id}})">
                                     <ng-template ngbPanelContent>
                                       <div class="card-body">
-                                        <p *ngFor="let writer of publisher.writers" style="font-size: 16px">
-                                          <code><pre>Writer: {{ JSON.stringify(writer, null, 4) }}</pre></code>
-                                        </p>
+                                        <div *ngFor="let writer of publisher.writers" style="font-size: 16px">
+                                            <h5>Writer (handle={{writer.pub_handle}})</h5>
+                                            <pre>Instances: <strong>{{ JSON.stringify(writer.instances, null, 4) }}</strong></pre>
+                                            <pre>Associations: <strong>{{ JSON.stringify(writer.associations, null, 4) }}</strong></pre>
+                                            <pre>dp_id: <strong>{{stringigyGUID(writer.dp_id)}}</strong></pre>
+                                            <pre>topic_id: <strong>{{stringigyGUID(writer.topic_id)}}</strong></pre>
+                                            <pre>dw_id: <strong>{{stringigyGUID(writer.dw_id)}}</strong></pre>
+                                        </div>
                                       </div>
                                     </ng-template>
                                   </ngb-panel>
@@ -39,9 +44,14 @@
                                   <ngb-panel *ngFor="let subscriber of mapSubscriberByTopic(domainParticipant.dp_id, topic.topic_id)" title="Subscriber (handle={{subscriber.handle}}, transportId={{subscriber.transport_id}})">
                                     <ng-template ngbPanelContent>
                                       <div class="card-body">
-                                        <p *ngFor="let reader of subscriber.readers" style="font-size: 16px">
-                                          <code><pre>Reader: {{ JSON.stringify(reader, null, 4) }}</pre></code>
-                                        </p>
+                                        <div *ngFor="let reader of subscriber.readers" style="font-size: 16px">
+                                            <h5>Reader (handle={{reader.sub_handle}})</h5>
+                                            <pre>Instances: <strong>{{ JSON.stringify(reader.instances, null, 4) }}</strong></pre>
+                                            <pre>Associations: <strong>{{ JSON.stringify(reader.associations, null, 4) }}</strong></pre>
+                                            <pre>dp_id: <strong>{{stringigyGUID(reader.dp_id)}}</strong></pre>
+                                            <pre>topic_id: <strong>{{stringigyGUID(reader.topic_id)}}</strong></pre>
+                                            <pre>dr_id: <strong>{{stringigyGUID(reader.dr_id)}}</strong></pre>
+                                        </div>
                                       </div>
                                     </ng-template>
                                   </ngb-panel>
@@ -60,9 +70,14 @@
                       <ngb-panel *ngFor="let publisher of mapPublishers(domainParticipant.dp_id)" title="Publisher (handle={{publisher.handle}}, transportId={{publisher.transport_id}})">
                         <ng-template ngbPanelContent>
                           <div class="card-body">
-                            <p *ngFor="let writer of publisher.writers" style="font-size: 16px">
-                              <code><pre>Writer: {{ JSON.stringify(writer, null, 4) }}</pre></code>
-                            </p>
+                            <div *ngFor="let writer of publisher.writers" style="font-size: 16px">
+                                <h5>Writer (handle={{writer.pub_handle}})</h5>
+                                <pre>Instances: <strong>{{ JSON.stringify(writer.instances, null, 4) }}</strong></pre>
+                                <pre>Associations: <strong>{{ JSON.stringify(writer.associations, null, 4) }}</strong></pre>
+                                <pre>dp_id: <strong>{{stringigyGUID(writer.dp_id)}}</strong></pre>
+                                <pre>topic_id: <strong>{{stringigyGUID(writer.topic_id)}}</strong></pre>
+                                <pre>dw_id: <strong>{{stringigyGUID(writer.dw_id)}}</strong></pre>
+                            </div>
                           </div>
                         </ng-template>
                       </ngb-panel>
@@ -75,9 +90,14 @@
                       <ngb-panel *ngFor="let subscriber of mapSubscriber(domainParticipant.dp_id)" title="Subscriber (handle={{subscriber.handle}}, transportId={{subscriber.transport_id}})">
                         <ng-template ngbPanelContent>
                           <div class="card-body">
-                            <p *ngFor="let reader of subscriber.readers" style="font-size: 16px">
-                              <code><pre>Reader: {{ JSON.stringify(reader, null, 4) }}</pre></code>
-                            </p>
+                            <div *ngFor="let reader of subscriber.readers" style="font-size: 16px">
+                              <h5>Reader (handle={{reader.sub_handle}})</h5>
+                              <pre>Instances: <strong>{{ JSON.stringify(reader.instances, null, 4) }}</strong></pre>
+                              <pre>Associations: <strong>{{ JSON.stringify(reader.associations, null, 4) }}</strong></pre>
+                              <pre>dp_id: <strong>{{stringigyGUID(reader.dp_id)}}</strong></pre>
+                              <pre>topic_id: <strong>{{stringigyGUID(reader.topic_id)}}</strong></pre>
+                              <pre>dr_id: <strong>{{stringigyGUID(reader.dr_id)}}</strong></pre>
+                            </div>
                           </div>
                         </ng-template>
                       </ngb-panel>

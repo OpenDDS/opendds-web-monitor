@@ -53,4 +53,8 @@ export class ProcessListComponent implements OnInit {
   hasDataReadersForTopic (subscriber, topic_id) {
     return subscriber.readers.some((reader) => _.isEqual(reader.topic_id, topic_id))
   }
+
+  stringigyGUID ({guidPrefix_0, guidPrefix_1, guidPrefix_2, guidPrefix_3, guidPrefix_4, guidPrefix_5}) {
+    return `[${[guidPrefix_0, guidPrefix_1, guidPrefix_2, guidPrefix_3, guidPrefix_4, guidPrefix_5].join(', ')}]`
+  }
 }
