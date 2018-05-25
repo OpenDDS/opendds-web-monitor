@@ -21,7 +21,7 @@ npm run start:fake
 
 ### Compile support libraries
 $ cd server
-### set environmnet variables (for linux)
+### set environment variables (for linux)
 $ source ../OpenDDS/setenv.sh
 
 $ export V8_ROOT=/usr #for linux
@@ -34,7 +34,7 @@ $ mwc.pl -type gnuace -exclude OpenDDS
 
 $ make
 
-### set environmnet variables (for windows)
+### set environment variables (for windows)
 set V8_ROOT=%USERPROFILE%\.node-gyp\6.12.3
 
 set NAN_ROOT=%CD%\node_modules\nan
