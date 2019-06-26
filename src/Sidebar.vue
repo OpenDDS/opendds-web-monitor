@@ -9,27 +9,27 @@
     </div>
 
     <ul class="inbox-nav">
-      <router-link to="/" class="navbar-brand" exact active-class="active">
+      <router-link :to="{name: 'dashboard'}" class="navbar-brand" exact active-class="active">
         <strong>Dashboard</strong>
       </router-link>
 
-      <router-link to="/topics" tag="li" active-class="active">
+      <router-link :to="{name: 'allTopics'}" tag="li" active-class="active">
         <a>Topics</a>
       </router-link>
 
-      <router-link to="/publishers" tag="li" active-class="active">
+      <router-link :to="{name: 'allPublishers'}" tag="li" active-class="active">
         <a>Publishers</a>
       </router-link>
 
-      <router-link to="/subscribers" tag="li" active-class="active">
+      <router-link :to="{name: 'allSubscribers'}" tag="li" active-class="active">
         <a>Subscribers</a>
       </router-link>
 
-      <router-link to="/datawriters" tag="li" active-class="active">
+      <router-link :to="{name: 'allDataWriters'}" tag="li" active-class="active">
         <a>Data Writers</a>
       </router-link>
 
-      <router-link to="/datareaders" tag="li" active-class="active">
+      <router-link :to="{name: 'allDataReaders'}" tag="li" active-class="active">
         <a>Data Readers</a>
       </router-link>
     </ul>

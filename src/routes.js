@@ -9,14 +9,14 @@ import ViewPublisher from "./ViewPublisher";
 import ViewSubcriber from "./ViewSubcriber";
 
 export const routes = [
-  { path: '/', component: Dashboard},
-  { path: '/topics', component: TopicSection},
+  { path: '/', name:'dashboard', component: Dashboard},
+  { path: '/topics', name:'allTopics', component: TopicSection},
   { path: '/topics/:topicId', name: 'viewTopic', component: ViewTopic},
-  { path: '/datawriters', component: DataWriterSection},
-  { path: '/datareaders', component: DataReaderSection},
-  { path: '/publishers', component: PublisherSection},
+  { path: '/publishers', name:'allPublishers', component: PublisherSection},
   { path: '/publishers/:publisherId', name: 'viewPublisher', component: ViewPublisher},
-  { path: '/subscribers', component: SubscriberSection},
+  { path: '/subscribers', name:'allSubscribers', component: SubscriberSection},
   { path: '/subscribers/:subscriberId', name: 'viewSubscriber', component: ViewSubcriber},
+  { path: '/datawriters', name:'allDataWriters', component: DataWriterSection},
+  { path: '/datareaders', name:'allDataReaders', component: DataReaderSection},
   { path: '*', component: { template: `<h1>Page Not Found</h1>`} }
 ];
