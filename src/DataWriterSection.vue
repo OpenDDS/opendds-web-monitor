@@ -7,7 +7,9 @@
 
     <div class="container">
       <div class="thumbnail col-xs-2" v-for="dataWriter in dataWriters">
-        <h4 class="list-group-item-heading">{{ dataWriter.name }}</h4>
+        <router-link :to="{name: 'viewDataWriter', params: {dataWriterId: dataWriter.id}}" tag="h4" class="group inner list-group-item-heading">
+          <a>{{ dataWriter.name }}</a>
+        </router-link>
       </div>
     </div>
   </div>
