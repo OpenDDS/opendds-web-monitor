@@ -6,14 +6,21 @@
     <br>
 
     <div class="container">
-      <div class="thumbnail col-xs-2">
-        <h4 class="list-group-item-heading">xxx DataWriter</h4>
+      <div class="thumbnail col-xs-2" v-for="dataWriter in dataWriters">
+        <h4 class="list-group-item-heading">{{ dataWriter.name }}</h4>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import dummy_dataWriters from './data/dummy_datawriters'
+
   export default {
+    data () {
+      return {
+        dataWriters: dummy_dataWriters
+      }
+    }
   }
 </script>
