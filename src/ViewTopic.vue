@@ -11,12 +11,16 @@
 
       <p><strong>Data Readers</strong></p>
       <div v-for="reader in topic.dataReaders">
-        <p>ID: {{ reader.id }} - {{ reader.name }}</p>
+        <router-link :to="{name: 'viewDataReader', params: {dataReaderId: reader.id}}" tag="p" class="group inner list-group-item-heading">
+          <p>ID: {{ reader.id }} - <a>{{ reader.name }}</a></p>
+        </router-link>
       </div>
 
       <p><strong>Data Writers</strong></p>
       <div v-for="writer in topic.dataWriters">
-        <p>ID: {{ writer.id }} - {{ writer.name }}</p>
+        <router-link :to="{name: 'viewDataWriter', params: {dataWriterId: writer.id}}" tag="p" class="group inner list-group-item-heading">
+          <p>ID: {{ writer.id }} - <a>{{ writer.name }}</a></p>
+        </router-link>
       </div>
     </div>
   </div>

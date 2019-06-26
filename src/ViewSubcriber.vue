@@ -11,7 +11,9 @@
 
     <p><strong>Data Readers</strong></p>
       <div v-for="reader in subscriber.dataReaders">
-        <p>ID: {{ reader.id }} - {{ reader.name }}</p>
+        <router-link :to="{name: 'viewDataReader', params: {dataReaderId: reader.id}}" tag="p" class="group inner list-group-item-heading">
+          <p>ID: {{ reader.id }} - <a>{{ reader.name }}</a></p>
+        </router-link>
       </div>
     </div>
   </div>
