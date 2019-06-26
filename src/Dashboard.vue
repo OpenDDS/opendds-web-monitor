@@ -8,7 +8,7 @@
 
     <div class="container">
       <div class="thumbnail col-xs-2">
-        <router-link to="/topics" tag="h4"  class="group inner list-group-item-heading">
+        <router-link :to="{name: 'allTopics'}" tag="h4"  class="group inner list-group-item-heading">
           <a>Topics</a>
         </router-link>
         <div>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="thumbnail col-xs-2">
-        <router-link to="/publishers" tag="h4"  class="group inner list-group-item-heading">
+        <router-link :to="{name: 'allPublishers'}" tag="h4"  class="group inner list-group-item-heading">
           <a>Publishers</a>
         </router-link>
         <div>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="thumbnail col-xs-2">
-        <router-link to="/publishers" tag="h4"  class="group inner list-group-item-heading">
+        <router-link :to="{name: 'allSubscribers'}"  tag="h4"  class="group inner list-group-item-heading">
           <a>Subscribers</a>
         </router-link>
         <div>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="thumbnail col-xs-2">
-        <router-link to="/datawriters" tag="h4"  class="group inner list-group-item-heading">
+        <router-link :to="{name: 'allDataWriters'}" tag="h4"  class="group inner list-group-item-heading">
           <a>Data Writers</a>
         </router-link>
         <div>
@@ -44,7 +44,7 @@
       </div>
 
       <div class="thumbnail col-xs-2">
-        <router-link to="/datareaders" tag="h4"  class="group inner list-group-item-heading">
+        <router-link :to="{name: 'allDataReaders'}" tag="h4"  class="group inner list-group-item-heading">
           <a>Data Readers</a>
         </router-link>
         <div>
