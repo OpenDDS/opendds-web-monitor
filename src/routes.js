@@ -8,6 +8,7 @@ import ViewTopic from "./ViewTopic";
 import ViewPublisher from "./ViewPublisher";
 import ViewSubcriber from "./ViewSubcriber";
 import ViewDataWriter from "./ViewDataWriter";
+import ViewDataReader from "./ViewDataReader";
 
 export const routes = [
   { path: '/', name:'dashboard', component: Dashboard},
@@ -20,5 +21,6 @@ export const routes = [
   { path: '/datawriters', name:'allDataWriters', component: DataWriterSection},
   { path: '/datawriters/:dataWriterId', name:'viewDataWriter', component: ViewDataWriter},
   { path: '/datareaders', name:'allDataReaders', component: DataReaderSection},
+  { path: '/datareaders/:dataReaderId', name:'viewDataReader', component: ViewDataReader},
   { path: '*', component: { template: `<h1>Page Not Found</h1>`} }
 ];

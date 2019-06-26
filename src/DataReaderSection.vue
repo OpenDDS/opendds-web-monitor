@@ -7,7 +7,9 @@
 
     <div class="container">
       <div class="thumbnail col-xs-2" v-for="dataReader in dataReaders">
-        <h4 class="list-group-item-heading">{{ dataReader.name }}</h4>
+        <router-link :to="{name: 'viewDataReader', params: {dataReaderId: dataReader.id}}" tag="h4" class="group inner list-group-item-heading">
+          <a>{{ dataReader.name }}</a>
+        </router-link>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ export default [
     "name":"gasPriceReader1"
   },
   {
-    "id":1,
+    "id":2,
     "name":"gasPriceReader2"
   }
 ]
