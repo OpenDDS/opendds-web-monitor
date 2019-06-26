@@ -4,7 +4,7 @@
       <img src="./assets/images/android-chrome-192x192.png" style="width:45px;height:45px;">
 
       <div class="user-name">
-        <h5>Open DDS Web Monitor</h5>
+        <h5>OpenDDS Web Monitor</h5>
       </div>
     </div>
 
